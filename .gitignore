@@ -1,0 +1,5 @@
+.firecrawl/
+.playwright-mcp/
+*-old.jpg
+*-broken.html
+about-video-2.mp4
