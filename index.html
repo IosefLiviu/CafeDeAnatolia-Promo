@@ -1464,6 +1464,8 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 768px) {
+  /* NAV */
+  .nav-inner { padding: 0 20px; }
   .nav-links { display: none; }
   .nav-links.open {
     display: flex;
@@ -1481,36 +1483,58 @@ img { max-width: 100%; display: block; }
   }
   .nav-mobile-toggle { display: block; }
 
+  /* HERO */
   .hero { padding: 0 16px; }
-  .hero-meta { gap: 16px; }
-  .hero-corner { width: 40px; height: 40px; }
-  .hero-corner--tl, .hero-corner--tr { top: 20px; }
-  .hero-corner--bl, .hero-corner--br { bottom: 20px; }
-  .hero-corner--tl, .hero-corner--bl { left: 16px; }
-  .hero-corner--tr, .hero-corner--br { right: 16px; }
+  .hero-meta { gap: 12px; flex-wrap: wrap; }
   .hero-title { letter-spacing: -2px; }
-  .hero-tagline { letter-spacing: 2px; margin-bottom: 32px; }
+  .hero-tagline { letter-spacing: 2px; margin-bottom: 24px; font-size: 11px; }
+  .hero-cta-group { flex-direction: column; align-items: center; gap: 12px; }
+  .btn-primary, .btn-secondary { width: 100%; max-width: 320px; justify-content: center; padding: 18px 32px; font-size: 15px; }
 
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-media-video { height: 60vh; }
+  /* ABOUT */
+  .about { padding: 60px 0; }
+  .about > .container { padding: 0 24px; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-text .section-title { font-size: clamp(32px, 8vw, 48px); }
+  .about-text p { font-size: 16px; max-width: 100%; }
+  .about-text .divider { margin: 20px auto; }
+  .about-media-video { height: 55vh; border-radius: 16px; }
+  .about-stats { max-width: 100%; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .about-stat { padding: 20px 12px; }
+  .about-stat-value { font-size: 36px; }
 
-  .artist-card { flex: 0 0 calc(50% - 14px); min-width: 260px; }
-  .lineup-grid { padding: 16px 24px 28px; gap: 20px; }
+  /* LINEUP */
+  .artist-card { flex: 0 0 75vw; min-width: 260px; }
+  .lineup-grid { padding: 16px 20px 28px; gap: 16px; }
+  .lineup { padding: 60px 0; }
 
-  .experience-banner { padding: 40px 24px; }
-  .experience-features { grid-template-columns: 1fr; }
+  /* MUSIC */
+  .music { padding: 60px 0; min-height: auto; }
+  .music .container { padding: 0 20px; }
+  .music-grid { grid-template-columns: 1fr; gap: 16px; }
+  .music-card { padding: 16px; }
+  .music-card iframe { height: 200px; }
 
-  .music .container { padding: 0 24px; }
-  .music-grid { grid-template-columns: 1fr; }
+  /* VENUE */
+  .venue { padding: 60px 0 0; }
   .venue > .container { padding: 0 24px; }
-  .venue-details { flex-direction: column; }
-  .venue-map { height: 35vh; }
+  .venue-info .section-title { font-size: clamp(32px, 8vw, 48px); }
+  .venue-info p { font-size: 16px; }
+  .venue-details { flex-direction: column; max-width: 100%; }
+  .venue-map { width: calc(100vw - 40px); height: 35vh; border-radius: 16px; }
 
+  /* TICKETS */
+  .tickets { padding: 60px 0; }
+  .tickets > .container { padding: 0 24px; }
+  .tickets-header .section-title { font-size: clamp(28px, 7vw, 40px); }
+  .ticket-card { max-width: 100%; }
+  .ticket-card-price { font-size: clamp(72px, 20vw, 120px); }
   .ticket-card-features { gap: 8px; }
   .ticket-card-features li { padding: 8px 14px; font-size: 13px; }
+  .ticket-card .btn-primary { padding: 20px; font-size: 16px; max-width: 100%; }
 
+  /* FOOTER */
   .footer-grid { grid-template-columns: 1fr; gap: 24px; }
-
   .mobile-sticky-cta { display: block; }
   .footer { padding-bottom: 100px; }
 
@@ -1518,12 +1542,25 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 480px) {
-  .artist-card { flex: 0 0 85vw; min-width: 260px; }
-  .lineup-grid { padding: 16px 20px 24px; gap: 16px; }
-  .hero-title { letter-spacing: -1px; font-size: clamp(48px, 14vw, 180px); }
-  .countdown-value { font-size: clamp(40px, 12vw, 120px); }
-  .countdown-block { min-width: auto; padding: 0 8px; }
-  .about-stats { grid-template-columns: 1fr; }
+  .hero-title { letter-spacing: -1px; font-size: clamp(40px, 12vw, 80px); }
+  .hero-subtitle { font-size: clamp(14px, 4vw, 18px); }
+  .countdown-value { font-size: clamp(36px, 10vw, 80px); }
+  .countdown-block { min-width: auto; padding: 0 6px; }
+
+  .about-text .section-title { font-size: clamp(28px, 7vw, 40px); }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .about-stat-value { font-size: 30px; }
+  .about-stat-label { font-size: 9px; }
+
+  .artist-card { flex: 0 0 85vw; }
+
+  .venue-map { width: calc(100vw - 24px); }
+
+  .ticket-card-price { font-size: clamp(60px, 18vw, 100px); }
+  .ticket-card-features li { padding: 6px 10px; font-size: 12px; }
+
+  .video-controls { bottom: 12px; }
+  .video-btn { width: 38px; height: 38px; }
 }
 </style>
 </head>
