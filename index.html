@@ -8,7 +8,16 @@
 <meta property="og:title" content="Cafe De Anatolia Showcase — Bucharest">
 <meta property="og:description" content="Organic & Melodic House experience. 25 Aprilie 2026, Grand Hotel Bucharest. Rialians On Earth, Billy Esteban, Keto van Harum, Jasmine.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="cafe-de-anatolia-showcase.jpg">
+<meta property="og:url" content="https://elevaterecords.ro/">
+<meta property="og:image" content="https://elevaterecords.ro/cafe-de-anatolia-showcase.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ro_RO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cafe De Anatolia Showcase — 25 Aprilie 2026 | Bucharest">
+<meta name="twitter:description" content="Organic & Melodic House experience cu Rialians On Earth, Billy Esteban, Keto van Harum si Jasmine. Grand Hotel Bucharest.">
+<meta name="twitter:image" content="https://elevaterecords.ro/cafe-de-anatolia-showcase.jpg">
+<link rel="canonical" href="https://elevaterecords.ro/">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- Meta Pixel Code -->
 <script>
@@ -1751,7 +1760,246 @@ img { max-width: 100%; display: block; }
   .video-controls { bottom: 12px; }
   .video-btn { width: 38px; height: 38px; }
 }
+
+/* ═══ FAQ ═══ */
+.faq-section { padding: 80px 0 60px; }
+.faq-grid { max-width: 800px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid rgba(212,168,82,.15);
+  padding: 0;
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  transition: color .3s;
+}
+.faq-question:hover { color: var(--gold); }
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  transition: transform .3s;
+  color: var(--gold);
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+.faq-answer p {
+  padding: 0 0 20px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.faq-item.open .faq-answer { max-height: 200px; }
 </style>
+
+<!-- ═══════════════════════════════════════════
+     STRUCTURED DATA / JSON-LD
+     ═══════════════════════════════════════════ -->
+
+<!-- SCHEMA 1: MusicEvent -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicEvent",
+  "name": "Cafe De Anatolia Showcase",
+  "description": "Cafe De Anatolia ajunge in Bucuresti. 6 ore de Organic & Melodic House cu Rialians On Earth, Billy Esteban, Keto van Harum si Jasmine. Grand Hotel Bucharest, 25 Aprilie 2026.",
+  "url": "https://elevaterecords.ro",
+  "image": [
+    "https://elevaterecords.ro/cafe-de-anatolia-showcase.jpg"
+  ],
+  "startDate": "2026-04-25T22:00:00+03:00",
+  "endDate": "2026-04-26T04:00:00+03:00",
+  "doorTime": "2026-04-25T22:00:00+03:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "inLanguage": "ro",
+  "isAccessibleForFree": false,
+  "maximumAttendeeCapacity": 1200,
+  "typicalAgeRange": "18+",
+  "location": {
+    "@type": "Place",
+    "name": "Grand Hotel Bucharest",
+    "url": "https://maps.google.com/maps?q=Grand+Hotel+Bucharest",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Bulevardul Nicolae Balcescu 4",
+      "addressLocality": "Bucuresti",
+      "addressRegion": "Bucuresti",
+      "postalCode": "010051",
+      "addressCountry": "RO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 44.4345,
+      "longitude": 26.0990
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Elevate Records",
+    "url": "https://elevaterecords.ro",
+    "sameAs": [
+      "https://www.instagram.com/elevaterecords.ro"
+    ]
+  },
+  "performer": [
+    {
+      "@type": "MusicGroup",
+      "name": "Rialians On Earth",
+      "description": "DJ, multi-instrumentalist si producator muzical, Rialians on Earth a lasat o amprenta de nesters pe scena muzicala globala. Label Head la Cafe De Anatolia.",
+      "genre": ["Organic House", "Melodic House", "Ethnic House"],
+      "sameAs": [
+        "https://www.instagram.com/rialiansmusic",
+        "https://open.spotify.com/artist/78h7VfOuRAnd6jtaEYQpg3",
+        "https://www.youtube.com/channel/UC_pEO_ghlQpbH70zMccIvbw"
+      ]
+    },
+    {
+      "@type": "MusicGroup",
+      "name": "Billy Esteban",
+      "description": "Compozitor, artist si producator. Co-fondatorul Cafe De Anatolia, maestru al sunetelor organice si al melodiilor profunde.",
+      "genre": ["Organic House", "Melodic House", "Ethnic House"],
+      "sameAs": [
+        "https://www.instagram.com/billyestebanmusic",
+        "https://open.spotify.com/artist/0nyKVqkATGrYXA98ieTJr0",
+        "https://www.youtube.com/@billyestebanmusic"
+      ]
+    },
+    {
+      "@type": "MusicGroup",
+      "name": "Keto van Harum",
+      "description": "DJ si producator roman de Afro, Deep & Melodic House, imbinand povestiri emotionale cu ritmuri hipnotice. Semnat cu Cafe De Anatolia.",
+      "genre": ["Afro House", "Deep House", "Melodic House"],
+      "sameAs": [
+        "https://www.instagram.com/ketovanharum",
+        "https://soundcloud.com/keto-50891801",
+        "https://ketovanharum.com/"
+      ]
+    },
+    {
+      "@type": "MusicGroup",
+      "name": "Jasmine",
+      "description": "Artista si DJ din Italia, activa pe scena muzicii electronice din 2017, aducand un suflu proaspat si energie captivanta.",
+      "genre": ["Electronic", "Organic House"],
+      "sameAs": [
+        "https://www.instagram.com/__jasmine__7"
+      ]
+    }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "name": "First Wave — Early Access",
+    "url": "https://biletin.ro/bilete/cafe-de-anatolia-showcase-1",
+    "price": 100,
+    "priceCurrency": "RON",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-01-01T00:00:00+02:00",
+    "category": "Early Bird"
+  }
+}
+</script>
+
+<!-- SCHEMA 2: Organization — Elevate Records -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Elevate Records",
+  "url": "https://elevaterecords.ro",
+  "logo": "https://elevaterecords.ro/favicon.ico",
+  "description": "Elevate Records — organizator de evenimente de muzica electronica in Romania. Partener oficial Cafe De Anatolia.",
+  "sameAs": [
+    "https://www.instagram.com/elevaterecords.ro"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "url": "https://elevaterecords.ro"
+  }
+}
+</script>
+
+<!-- SCHEMA 3: Organization — Cafe De Anatolia -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Cafe De Anatolia",
+  "description": "Cafe De Anatolia — global music label and event brand specializing in Organic, Melodic and Ethnic House music.",
+  "url": "https://www.cafedeanatolia.com",
+  "sameAs": [
+    "https://www.instagram.com/cafedeanatolia",
+    "https://open.spotify.com/artist/2sSSGlRMfz4ZEcw4rw0m0v",
+    "https://www.youtube.com/channel/UC1Tr6S-XLBk1NzNX1jErWMg",
+    "https://soundcloud.com/cafedeanatolia"
+  ]
+}
+</script>
+
+<!-- SCHEMA 4: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Elevate Records",
+      "item": "https://elevaterecords.ro"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Cafe De Anatolia Showcase — 25 Aprilie 2026",
+      "item": "https://elevaterecords.ro"
+    }
+  ]
+}
+</script>
+
+<!-- SCHEMA 5: WebPage + speakable -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Cafe De Anatolia Showcase — 25 Aprilie 2026 | Grand Hotel Bucharest",
+  "description": "Cafe De Anatolia ajunge in Bucuresti. Organic & Melodic House experience cu Rialians On Earth, Billy Esteban, Keto van Harum si Jasmine. 25 Aprilie 2026, Grand Hotel Bucharest.",
+  "url": "https://elevaterecords.ro",
+  "inLanguage": "ro",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Elevate Records",
+    "url": "https://elevaterecords.ro"
+  },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".hero",
+      ".venue-desc",
+      ".venue-details",
+      ".ticket-card-price",
+      ".ticket-card-limit"
+    ]
+  }
+}
+</script>
+
 </head>
 <body>
 <div class="global-particles" id="particles"></div>
@@ -2179,6 +2427,137 @@ img { max-width: 100%; display: block; }
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════════════
+     FAQ
+     ═══════════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-label reveal">Intrebari Frecvente</div>
+    <h2 class="section-title reveal">FAQ</h2>
+    <div class="faq-grid">
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Ce este Cafe De Anatolia Showcase?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Cafe De Anatolia Showcase este un eveniment de muzica Organic &amp; Melodic House organizat de Elevate Records. Este prima data cand conceptul Cafe De Anatolia &mdash; label muzical fondat de familia Ilievi, recunoscut de Forbes ca pionier al genului Organic House, cu peste 4 milioane de abonati pe YouTube &mdash; ajunge in Romania.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Cand si unde are loc evenimentul?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Evenimentul are loc pe 25 Aprilie 2026, de la ora 22:00 pana la 04:00, la Grand Hotel Bucharest, Bulevardul Nicolae Balcescu 4, Bucuresti.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Cat costa biletele si de unde le cumpar?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Biletele First Wave (early access) costa 100 RON si sunt limitate la 300 de bucati. Dupa epuizarea lor, pretul creste. Biletele se cumpara exclusiv de pe biletin.ro.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Cine canta la eveniment?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Lineup-ul include patru artisti internationali si romani: Rialians On Earth, Billy Esteban (co-fondator Cafe De Anatolia), Keto van Harum si Jasmine. Genurile abordate sunt Organic House, Melodic House si Ethnic House.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Exista limita de varsta?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Da, evenimentul este destinat persoanelor cu varsta de minimum 18 ani. La intrare se va solicita un act de identitate valid.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Care este dress code-ul?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Dress code-ul este smart casual / elegant. Grand Hotel Bucharest este o locatie premium, asa ca va incurajam sa veniti intr-o tinuta adecvata.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ce este Cafe De Anatolia Showcase?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cafe De Anatolia Showcase este un eveniment de muzica Organic & Melodic House organizat de Elevate Records. Este prima data cand conceptul Cafe De Anatolia — label muzical fondat de familia Ilievi, recunoscut de Forbes ca pionier al genului Organic House, cu peste 4 milioane de abonati pe YouTube — ajunge in Romania."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cand si unde are loc evenimentul?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Evenimentul are loc pe 25 Aprilie 2026, de la ora 22:00 pana la 04:00, la Grand Hotel Bucharest, Bulevardul Nicolae Balcescu 4, Bucuresti."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cat costa biletele si de unde le cumpar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Biletele First Wave (early access) costa 100 RON si sunt limitate la 300 de bucati. Dupa epuizarea lor, pretul creste. Biletele se cumpara exclusiv de pe biletin.ro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cine canta la eveniment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lineup-ul include patru artisti internationali si romani: Rialians On Earth, Billy Esteban (co-fondator Cafe De Anatolia), Keto van Harum si Jasmine. Genurile abordate sunt Organic House, Melodic House si Ethnic House."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Exista limita de varsta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Da, evenimentul este destinat persoanelor cu varsta de minimum 18 ani. La intrare se va solicita un act de identitate valid."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Care este dress code-ul?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dress code-ul este smart casual / elegant. Grand Hotel Bucharest este o locatie premium, asa ca va incurajam sa veniti intr-o tinuta adecvata."
+      }
+    }
+  ]
+}
+</script>
 
 <!-- ═══════════════════════════════════════════
      FOOTER
