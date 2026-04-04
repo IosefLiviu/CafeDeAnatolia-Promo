@@ -2236,11 +2236,11 @@ img { max-width: 100%; display: block; }
      JAVASCRIPT
      ═══════════════════════════════════════════ -->
 <script>
-// ─── ABOUT VIDEO CONTROLS ────────────────────────
-(function() {
-  const video = document.getElementById('aboutVideo');
-  const bigPlay = document.getElementById('aboutBigPlay');
-  const soundBtn = document.getElementById('aboutSound');
+// ─── VIDEO CONTROLLER (shared) ────────────────────
+function initVideoControls(videoId, playBtnId, soundBtnId) {
+  const video = document.getElementById(videoId);
+  const bigPlay = document.getElementById(playBtnId);
+  const soundBtn = document.getElementById(soundBtnId);
   if (!video || !bigPlay || !soundBtn) return;
 
   const iconBigPlay = bigPlay.querySelector('.icon-big-play');
@@ -2249,34 +2249,49 @@ img { max-width: 100%; display: block; }
   const iconSound = soundBtn.querySelector('.icon-sound');
   let hideTimer;
 
-  function updatePlayIcons() {
+  function showPaused() {
+    iconBigPlay.style.display = '';
+    iconBigPause.style.display = 'none';
+    bigPlay.classList.add('paused');
+  }
+
+  function showPlaying() {
+    iconBigPlay.style.display = 'none';
+    iconBigPause.style.display = '';
+    bigPlay.classList.remove('paused');
+    bigPlay.classList.add('visible');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function() {
+      bigPlay.classList.remove('visible');
+    }, 800);
+  }
+
+  function togglePlay(e) {
+    e.preventDefault();
+    e.stopPropagation();
     if (video.paused) {
-      iconBigPlay.style.display = '';
-      iconBigPause.style.display = 'none';
-      bigPlay.classList.add('paused');
+      var p = video.play();
+      if (p && p.then) {
+        p.then(showPlaying).catch(function() {
+          showPaused();
+        });
+      }
     } else {
-      iconBigPlay.style.display = 'none';
-      iconBigPause.style.display = '';
-      bigPlay.classList.remove('paused');
-      bigPlay.classList.add('visible');
-      clearTimeout(hideTimer);
-      hideTimer = setTimeout(function() {
-        bigPlay.classList.remove('visible');
-      }, 800);
+      video.pause();
+      showPaused();
     }
   }
 
-  video.addEventListener('click', function(e) {
-    e.preventDefault();
-    if (video.paused) { video.play(); } else { video.pause(); }
-    updatePlayIcons();
+  // Listen for native play/pause events as source of truth
+  video.addEventListener('play', showPlaying);
+  video.addEventListener('pause', showPaused);
+  video.addEventListener('ended', function() {
+    video.currentTime = 0;
+    video.play();
   });
 
-  bigPlay.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (video.paused) { video.play(); } else { video.pause(); }
-    updatePlayIcons();
-  });
+  video.addEventListener('click', togglePlay);
+  bigPlay.addEventListener('click', togglePlay);
 
   soundBtn.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -2284,68 +2299,10 @@ img { max-width: 100%; display: block; }
     iconMuted.style.display = video.muted ? '' : 'none';
     iconSound.style.display = video.muted ? 'none' : '';
   });
-})();
+}
 
-// ─── VENUE VIDEO CONTROLS ─────────────────────
-(function() {
-  const video = document.getElementById('venueVideo');
-  const bigPlay = document.getElementById('venueBigPlay');
-  const soundBtn = document.getElementById('venueSound');
-  if (!video || !bigPlay || !soundBtn) return;
-
-  const iconBigPlay = bigPlay.querySelector('.icon-big-play');
-  const iconBigPause = bigPlay.querySelector('.icon-big-pause');
-  const iconMuted = soundBtn.querySelector('.icon-muted');
-  const iconSound = soundBtn.querySelector('.icon-sound');
-  let hideTimer;
-
-  function updatePlayIcons() {
-    if (video.paused) {
-      iconBigPlay.style.display = '';
-      iconBigPause.style.display = 'none';
-      bigPlay.classList.add('paused');
-    } else {
-      iconBigPlay.style.display = 'none';
-      iconBigPause.style.display = '';
-      bigPlay.classList.remove('paused');
-      // Show briefly then fade out
-      bigPlay.classList.add('visible');
-      clearTimeout(hideTimer);
-      hideTimer = setTimeout(function() {
-        bigPlay.classList.remove('visible');
-      }, 800);
-    }
-  }
-
-  // Tap anywhere on video to play/pause
-  video.addEventListener('click', function(e) {
-    e.preventDefault();
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-    updatePlayIcons();
-  });
-
-  bigPlay.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-    updatePlayIcons();
-  });
-
-  // Sound toggle
-  soundBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    video.muted = !video.muted;
-    iconMuted.style.display = video.muted ? '' : 'none';
-    iconSound.style.display = video.muted ? 'none' : '';
-  });
-})();
+initVideoControls('aboutVideo', 'aboutBigPlay', 'aboutSound');
+initVideoControls('venueVideo', 'venueBigPlay', 'venueSound');
 
 // ─── TICKET FOMO ──────────────────────────
 (function() {
