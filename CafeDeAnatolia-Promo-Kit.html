@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe De Anatolia Showcase &mdash; Kit Promovare</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --gold: #D4A852;
+    --gold-light: #F0D48A;
+    --gold-dark: #A07C30;
+    --amber: #FF9F1C;
+    --bg-dark: #0A0A0A;
+    --bg-card: #111111;
+    --bg-card-hover: #1A1A1A;
+    --bg-section: #0E0E0E;
+    --text-primary: #F5F0E8;
+    --text-secondary: #9A9080;
+    --text-muted: #5A5248;
+    --border: #222018;
+    --red: #E74C3C;
+    --green: #2ECC71;
+    --blue: #3498DB;
+    --purple: #9B59B6;
+    --teal: #1ABC9C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 30%, rgba(212,168,82,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 70%, rgba(255,159,28,0.04) 0%, transparent 50%),
+                var(--bg-dark);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A852' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(212,168,82,0.08);
+    border: 1px solid rgba(212,168,82,0.15);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--gold-light) 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: var(--text-secondary);
+    font-weight: 300;
+    max-width: 650px;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-meta-item { text-align: center; }
+
+  .hero-meta-item .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .hero-meta-item .value {
+    font-size: 15px;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .toc {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .toc::-webkit-scrollbar { display: none; }
+
+  .toc-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+  }
+
+  .toc a {
+    display: inline-block;
+    padding: 16px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+
+  .toc a:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header { margin-bottom: 48px; }
+
+  .section-number {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .section-desc {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 700px;
+  }
+
+  .script-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 32px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .script-card:hover { border-color: rgba(212,168,82,0.3); }
+
+  .script-card-header {
+    padding: 32px 32px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .script-num {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--bg-dark);
+    flex-shrink: 0;
+  }
+
+  .script-info { flex: 1; min-width: 200px; }
+  .script-info h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+
+  .script-info .script-type {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .script-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+
+  .tag {
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .tag-duration { background: rgba(52,152,219,0.12); color: var(--blue); }
+  .tag-format { background: rgba(155,89,182,0.12); color: var(--purple); }
+  .tag-mood { background: rgba(26,188,156,0.12); color: var(--teal); }
+
+  .script-card-body { padding: 32px; }
+  .script-card-body details { margin-bottom: 24px; }
+  .script-card-body details:last-child { margin-bottom: 0; }
+
+  .script-card-body summary {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .script-card-body summary::before {
+    content: '+';
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--gold);
+    transition: transform 0.2s;
+  }
+
+  .script-card-body details[open] summary::before { content: '\2212'; }
+  .script-card-body summary::-webkit-details-marker { display: none; }
+
+  .detail-content { padding: 20px 0 8px; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+
+  thead th {
+    background: rgba(212,168,82,0.06);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(34,32,24,0.5);
+    color: var(--text-primary);
+    vertical-align: top;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: rgba(212,168,82,0.02); }
+
+  .copy-block {
+    background: rgba(212,168,82,0.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 12px 0;
+    font-size: 14px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: var(--text-primary);
+    position: relative;
+  }
+
+  .copy-block .block-label {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .variant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .variant-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+
+  .variant-card:hover {
+    border-color: rgba(212,168,82,0.25);
+    transform: translateY(-2px);
+  }
+
+  .variant-label {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .variant-a .variant-label { background: rgba(231,76,60,0.12); color: var(--red); }
+  .variant-b .variant-label { background: rgba(255,159,28,0.12); color: var(--amber); }
+  .variant-c .variant-label { background: rgba(52,152,219,0.12); color: var(--blue); }
+  .variant-d .variant-label { background: rgba(155,89,182,0.12); color: var(--purple); }
+  .variant-e .variant-label { background: rgba(26,188,156,0.12); color: var(--teal); }
+  .variant-f .variant-label { background: rgba(46,204,113,0.12); color: var(--green); }
+
+  .variant-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+
+  .variant-card .ad-text {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    white-space: pre-line;
+    margin-bottom: 16px;
+    padding: 16px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    border-left: 3px solid var(--gold-dark);
+  }
+
+  .variant-card .ad-meta { font-size: 12px; color: var(--text-muted); }
+  .variant-card .ad-meta strong { color: var(--text-secondary); }
+
+  .timeline { position: relative; padding-left: 32px; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--gold-dark), transparent);
+  }
+
+  .week-block { position: relative; margin-bottom: 48px; }
+
+  .week-block::before {
+    content: '';
+    position: absolute;
+    left: -32px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--bg-dark);
+    z-index: 1;
+  }
+
+  .week-block h4 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+
+  .week-block .week-dates {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .week-block .week-goal {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .prompt-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .prompt-title {
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    background: rgba(212,168,82,0.04);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prompt-text {
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .msg-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .msg-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+
+  .msg-card .msg-timing {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .msg-card .msg-body {
+    font-size: 13px;
+    line-height: 1.8;
+    white-space: pre-line;
+    color: var(--text-secondary);
+    padding: 16px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+  }
+
+  .caption-platform { margin-bottom: 32px; }
+
+  .platform-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .platform-ig { background: rgba(225,48,108,0.12); color: #E1306C; }
+  .platform-tt { background: rgba(255,255,255,0.08); color: #fff; }
+  .platform-fb { background: rgba(24,119,242,0.12); color: #1877F2; }
+
+  .hashtag-group { margin-bottom: 20px; }
+
+  .hashtag-group-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .chip {
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    background: rgba(212,168,82,0.08);
+    color: var(--gold-light);
+    border: 1px solid rgba(212,168,82,0.12);
+  }
+
+  .info-box {
+    padding: 20px 24px;
+    border-radius: 10px;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .info-box.tip {
+    background: rgba(26,188,156,0.06);
+    border: 1px solid rgba(26,188,156,0.15);
+    color: var(--teal);
+  }
+
+  .info-box.warning {
+    background: rgba(255,159,28,0.06);
+    border: 1px solid rgba(255,159,28,0.15);
+    color: var(--amber);
+  }
+
+  .info-box strong { color: inherit; }
+
+  .budget-row { margin-bottom: 16px; }
+
+  .budget-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .budget-label span:first-child { font-weight: 600; }
+  .budget-label span:last-child { color: var(--gold); font-weight: 700; }
+
+  .budget-bar {
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(212,168,82,0.1);
+    overflow: hidden;
+  }
+
+  .budget-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .kpi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .kpi-card .kpi-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .kpi-card .kpi-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .footer {
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
+  .footer a { color: var(--gold); text-decoration: none; }
+
+  ul.styled, ol.styled { padding-left: 20px; margin: 12px 0; }
+
+  ul.styled li, ol.styled li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  ul.styled li strong, ol.styled li strong { color: var(--text-primary); }
+
+  h5.sub {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 24px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  p.body-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+
+  @media print {
+    .toc { display: none; }
+    section { break-inside: avoid; }
+    body { background: #fff; color: #111; }
+    .hero { min-height: auto; padding: 40px; }
+    .hero h1 { -webkit-text-fill-color: #111; background: none; }
+  }
+
+  @media (max-width: 768px) {
+    .script-card-header { padding: 20px; }
+    .script-card-body { padding: 20px; }
+    .variant-grid { grid-template-columns: 1fr; }
+    .hero-meta { gap: 20px; }
+    section { padding: 48px 0; }
+    .timeline { padding-left: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="hero">
+  <div class="hero-badge">Kit Promovare &mdash; Pachet Complet de Productie</div>
+  <h1>Cafe De Anatolia<br>Showcase</h1>
+  <p class="hero-subtitle">5 scripturi video, texte pentru reclame, descrieri social media, strategie pe 4 saptamani, prompturi AI, template-uri email &amp; SMS &mdash; tot ce ai nevoie pentru a face sold out la acest eveniment.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="label">Data</div>
+      <div class="value">25 Aprilie 2026</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">Locatie</div>
+      <div class="value">Grand Hotel Bucharest</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">Program</div>
+      <div class="value">22:00 &mdash; 04:00</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">First Wave</div>
+      <div class="value">100 LEI &middot; 300 bilete</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">Organizator</div>
+      <div class="value">Elevate Records</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#scripts">Scripturi</a>
+    <a href="#captions">Descrieri Social Media</a>
+    <a href="#strategy">Strategie</a>
+    <a href="#ads">Texte Reclame</a>
+    <a href="#ai-prompts">Prompturi AI</a>
+    <a href="#messaging">Email / SMS</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════════════ SCRIPTURI VIDEO ═══════════════════ -->
+<section id="scripts">
+  <div class="section-header">
+    <div class="section-number">01 / Scripturi Video</div>
+    <h2 class="section-title">5 Scripturi Video</h2>
+    <p class="section-desc">Scripturi gata de productie cu lista de cadre, voce narator, note muzicale si specificatii tehnice. Fiecare ~30 secunde.</p>
+  </div>
+
+  <!-- ── Script 01 ── -->
+  <div class="script-card">
+    <div class="script-card-header">
+      <div class="script-num">01</div>
+      <div class="script-info">
+        <h3>Dezvaluirea Misterului</h3>
+        <div class="script-type">Teaser</div>
+      </div>
+      <div class="script-tags">
+        <span class="tag tag-duration">30 sec</span>
+        <span class="tag tag-format">9:16 + 16:9</span>
+        <span class="tag tag-mood">Intuneric &middot; Misterios</span>
+      </div>
+    </div>
+    <div class="script-card-body">
+      <p class="body-text"><strong>Colorimetrie:</strong> Negru profund, accente calde de chihlimbar/auriu, umbre desaturate</p>
+
+      <details>
+        <summary>Lista de Cadre</summary>
+        <div class="detail-content">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Timp</th><th>Cadru</th><th>Vizual</th><th>Audio</th><th>Text pe Ecran</th></tr></thead>
+              <tbody>
+                <tr><td>0:00–0:03</td><td>1</td><td>Ecran negru. Flacara unei lumanari in prim-plan extrem. Zoom lent.</td><td>Liniste &rarr; bas sub care se intensifica</td><td>&mdash;</td></tr>
+                <tr><td>0:03–0:06</td><td>2</td><td>Particule de nisip plutind in raza de lumina aurie (pe fundal negru sau VFX)</td><td>Ciupire de oud moale, coada de reverb</td><td>"Ceva se apropie..."</td></tr>
+                <tr><td>0:06–0:09</td><td>3</td><td>Silueta unui DJ in spatele fumului/cetii, retroiluminat cu chihlimbar cald. Slow motion.</td><td>Percutia intra &mdash; pattern de darbuka moale</td><td>"...de Bucuresti"</td></tr>
+                <tr><td>0:09–0:12</td><td>4</td><td>Taieturi rapide (0.5s fiecare): maini in aer / peisaj desert la ora aurie / vartej de fum / raze de lumina prin ceata</td><td>Beat-ul creste &mdash; progresie melodic house</td><td>&mdash;</td></tr>
+                <tr><td>0:12–0:15</td><td>5</td><td>DEZVALUIREA LOGO-ULUI: Logo-ul Cafe De Anatolia se materializeaza din particule de praf auriu. Centrul ecranului.</td><td>Bass drop &mdash; kick melodic house</td><td>"CAFE DE ANATOLIA"</td></tr>
+                <tr><td>0:15–0:19</td><td>6</td><td>Montaj: mixer DJ in prim-plan / multime dansand in slow-mo / Grand Hotel Bucharest exteriorul noapte</td><td>Groove melodic complet, energie maxima</td><td>&mdash;</td></tr>
+                <tr><td>0:19–0:23</td><td>7</td><td>Cadru larg: Grand Hotel Bucharest, noapte, iluminat. Dolly sau drona lenta.</td><td>Muzica continua</td><td>"25 Aprilie 2026 | Grand Hotel Bucharest"</td></tr>
+                <tr><td>0:23–0:27</td><td>8</td><td>Flash-uri rapide cu numele artistilor (1s fiecare): Rialians On Earth / Billy Esteban / Keto van Harum / Jasmine</td><td>Muzica continua</td><td>Numele artistilor, tipografie stilizata</td></tr>
+                <tr><td>0:27–0:30</td><td>9</td><td>Ecran final: poster eveniment sau logo + informatii bilete. Curat, minimal.</td><td>Muzica se estompeaza</td><td>"First Wave &mdash; 100 LEI | biletin.ro"</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Voce Narator</summary>
+        <div class="detail-content">
+          <p class="body-text"><strong>Limba:</strong> Romana &nbsp;&middot;&nbsp; <strong>Ton:</strong> Profund, calm, misterios. Voce masculina preferata.</p>
+          <div class="copy-block">"Ceva se apropie de Bucuresti..."
+(pauza)
+"Cafe De Anatolia. 25 Aprilie. O noapte. O calatorie."</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Sugestii Muzicale</summary>
+        <div class="detail-content">
+          <ul class="styled">
+            <li>Rialians On Earth &mdash; "Sahara" sau similar (verifica licentierea)</li>
+            <li>Orice piesa din compilatiile Cafe De Anatolia cu un build melodic recognoscibil</li>
+            <li>Alternativa: organic house royalty-free cu intro de oud/corzi care creste spre un drop melodic</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>Note de Productie</summary>
+        <div class="detail-content">
+          <ul class="styled">
+            <li>Daca nu exista filmare reala, foloseste stock de pe Pexels/Artgrid: cauta "desert night", "smoke particles", "DJ silhouette", "crowd golden hour"</li>
+            <li><strong>VFX:</strong> After Effects &mdash; Trapcode Particular pentru particulele de nisip/praf la dezvaluirea logo-ului</li>
+            <li><strong>Culoare:</strong> Foloseste LUT "Orange &amp; Teal", accentueaza tonurile calde, crush pe negruri</li>
+            <li><strong>Tipografie:</strong> Sans-serif, grosime subtire, spatiere larga (gen: Montserrat Light, uppercase)</li>
+            <li><strong>Tranzitii:</strong> Cross-dissolve pentru sectiunile lente, taieturi bruste pentru montajul rapid</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>Instructiuni de Postare</summary>
+        <div class="detail-content">
+          <ul class="styled">
+            <li><strong>Instagram Stories:</strong> Posteaza ca secventa de 3 story-uri (teaser &rarr; dezvaluire &rarr; CTA)</li>
+            <li><strong>Instagram Reels:</strong> Versiunea completa de 30s</li>
+            <li><strong>TikTok:</strong> 30s complet, adauga sunet trending deasupra daca e nevoie pentru algoritm</li>
+            <li><strong>Facebook:</strong> Foloseste taietura 16:9 orizontala pentru reclame in feed</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ── Script 02 ── -->
+  <div class="script-card">
+    <div class="script-card-header">
+      <div class="script-num">02</div>
+      <div class="script-info">
+        <h3>Prezentarea Lineup-ului</h3>
+        <div class="script-type">Spotlight Artisti</div>
+      </div>
+      <div class="script-tags">
+        <span class="tag tag-duration">30 sec</span>
+        <span class="tag tag-format">9:16 + 16:9</span>
+        <span class="tag tag-mood">Energic &middot; Stilat</span>
+      </div>
+    </div>
+    <div class="script-card-body">
+      <p class="body-text"><strong>Colorimetrie:</strong> Contrast ridicat, tonuri calde, fiecare artist poate avea o schimbare subtila de culoare</p>
+
+      <details>
+        <summary>Lista de Cadre</summary>
+        <div class="detail-content">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Timp</th><th>Cadru</th><th>Vizual</th><th>Audio</th><th>Text pe Ecran</th></tr></thead>
+              <tbody>
+                <tr><td>0:00–0:02</td><td>1</td><td>Ecran negru &rarr; puls de lumina sincronizat cu primul beat</td><td>Intro melodic house &mdash; primul kick</td><td>"THE LINEUP" (flash on/off)</td></tr>
+                <tr><td>0:02–0:08</td><td>2</td><td><strong>RIALIANS ON EARTH</strong> &mdash; Ecran impartit sau cadru complet. Filmare live/foto. Animatie waveform.</td><td>Sunetul lor signature</td><td>"RIALIANS ON EARTH" &mdash; animeaza din stanga</td></tr>
+                <tr><td>0:08–0:13</td><td>3</td><td><strong>BILLY ESTEBAN</strong> &mdash; Unghi diferit/schimbare de culoare. Foto/video.</td><td>Tranzitie muzicala</td><td>"BILLY ESTEBAN" &mdash; animeaza din dreapta</td></tr>
+                <tr><td>0:13–0:18</td><td>4</td><td><strong>KETO VAN HARUM</strong> &mdash; Tonuri mai calde. Energia creste.</td><td>Intensitate in crestere</td><td>"KETO VAN HARUM" &mdash; cade de sus</td></tr>
+                <tr><td>0:18–0:22</td><td>5</td><td><strong>JASMINE</strong> &mdash; Energie maxima. Lens flare sau explozie de lumina.</td><td>Varful melodic</td><td>"JASMINE" &mdash; fade in centru</td></tr>
+                <tr><td>0:22–0:26</td><td>6</td><td>Cele 4 panouri se unesc (quad-split &rarr; un singur cadru). Grand Hotel Bucharest, noapte.</td><td>Drop complet</td><td>&mdash;</td></tr>
+                <tr><td>0:26–0:30</td><td>7</td><td>Ecran final: logo sus, info eveniment centru, CTA bilete jos.</td><td>Muzica se rezolva</td><td>"25.04.2026 | Grand Hotel Bucharest"</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Note de Animatie</summary>
+        <div class="detail-content">
+          <h5 class="sub">Tranzitii Nume Artisti (alege un stil):</h5>
+          <ul class="styled">
+            <li><strong>Optiunea A &mdash; Glitch:</strong> Numele apare cu distorsiune digitala, se stabilizeaza curat</li>
+            <li><strong>Optiunea B &mdash; Reveal:</strong> Linie aurie trece pe ecran, textul se dezvaluie in urma ei</li>
+            <li><strong>Optiunea C &mdash; Tip cinetic:</strong> Literele cad/aluneca una cate una, sincronizate pe beat</li>
+          </ul>
+          <h5 class="sub">Unificarea 4-in-1 (Cadrul 6):</h5>
+          <ul class="styled">
+            <li>Fiecare panou de artist ocupa 1/4 din ecran</li>
+            <li>Toate 4 vizibile 1 secunda, apoi aluneca impreuna, cross-dissolve in cadrul cu locatia</li>
+            <li>Senzatia de "toti artistii converg spre o singura locatie"</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>Materiale Necesare</summary>
+        <div class="detail-content">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Artist</th><th>Ce sa folosesti</th></tr></thead>
+              <tbody>
+                <tr><td>Rialians On Earth</td><td>Foto de presa oficiala sau filmare de la set live. Verifica Instagram/Facebook.</td></tr>
+                <tr><td>Billy Esteban</td><td>Foto de presa sau still din performanta.</td></tr>
+                <tr><td>Keto van Harum</td><td>Aceeasi abordare.</td></tr>
+                <tr><td>Jasmine</td><td>Aceeasi abordare.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="info-box tip"><strong>Fara materiale oficiale?</strong> Foloseste text stilizat cu fundaluri vizuale abstracte (fum, particule, raze de lumina) &mdash; arata tot premium.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Instructiuni de Postare</summary>
+        <div class="detail-content">
+          <ul class="styled">
+            <li><strong>Platforme recomandate:</strong> Instagram Reels, TikTok, YouTube Shorts</li>
+            <li><strong>Strategie descriere:</strong> Tag-uieste contul oficial al fiecarui artist</li>
+            <li><strong>Alternativa carusel:</strong> Poate fi impartit in 4 clipuri separate de 8 secunde (unul per artist) pentru Stories</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ── Script 03 ── -->
+  <div class="script-card">
+    <div class="script-card-header">
+      <div class="script-num">03</div>
+      <div class="script-info">
+        <h3>Numaratoarea Inversa / FOMO</h3>
+        <div class="script-type">Urgenta</div>
+      </div>
+      <div class="script-tags">
+        <span class="tag tag-duration">28 sec</span>
+        <span class="tag tag-format">9:16 Vertical</span>
+        <span class="tag tag-mood">Rapid &middot; Urgent &middot; Energie Mare</span>
+      </div>
+    </div>
+    <div class="script-card-body">
+      <p class="body-text"><strong>Colorimetrie:</strong> Contrast ridicat, accente rosii/chihlimbar pe fundal inchis</p>
+
+      <details>
+        <summary>Lista de Cadre</summary>
+        <div class="detail-content">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Timp</th><th>Cadru</th><th>Vizual</th><th>Audio</th><th>Text pe Ecran</th></tr></thead>
+              <tbody>
+                <tr><td>0:00–0:02</td><td>1</td><td>Ecran negru. Contor digital rosu apare: "300"</td><td>Ticait de ceas &mdash; puternic, mecanic</td><td>"300 DE BILETE"</td></tr>
+                <tr><td>0:02–0:05</td><td>2</td><td>Contorul scade rapid: 300&rarr;287&rarr;251&rarr;198&rarr;142. Stil pacanea.</td><td>Ticaitul se accelereaza + melodic house intra</td><td>"FIRST WAVE"</td></tr>
+                <tr><td>0:05–0:08</td><td>3</td><td>Montaj flash (0.3s fiecare): mixer DJ / fum / maini multime / lumina aurie / difuzor bas</td><td>Melodic house in crestere</td><td>"100 LEI"</td></tr>
+                <tr><td>0:08–0:11</td><td>4</td><td>Logo CDA &mdash; efect glitch/flicar, instabil, ca si cum lupta sa apara</td><td>Tensiune, pre-drop</td><td>"CAFE DE ANATOLIA"</td></tr>
+                <tr><td>0:11–0:14</td><td>5</td><td>Energie totala: multime in delir / confetti / lasere / DJ la varf. Taieturi rapide.</td><td>DROP &mdash; varf complet</td><td>"VINE IN BUCURESTI"</td></tr>
+                <tr><td>0:14–0:17</td><td>6</td><td>Grand Hotel Bucharest &mdash; unghi dramatic, noapte. Drona sau unghi jos.</td><td>Muzica la maxim</td><td>"25 APRILIE 2026"</td></tr>
+                <tr><td>0:17–0:20</td><td>7</td><td>Contorul scade: 142&rarr;97&rarr;63&rarr;41&rarr;18... clipeste rosu</td><td>Muzica se retrage, tensiune</td><td>"NU MAI SUNT MULTE"</td></tr>
+                <tr><td>0:20–0:24</td><td>8</td><td>NEGRU. Liniste. Apoi: poster eveniment, curat, centrat.</td><td>Liniste &rarr; un singur hit de bas</td><td>Poster eveniment</td></tr>
+                <tr><td>0:24–0:28</td><td>9</td><td>Ecran final: logo + CTA. Contorul arata "???"</td><td>Sub-bas se estompeaza</td><td>"LINK IN BIO | biletin.ro"</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Specificatii Animatie Contor</summary>
+        <div class="detail-content">
+          <ul class="styled">
+            <li><strong>Font:</strong> Monospace / stil ceas digital (Digital-7, DSEG7)</li>
+            <li><strong>Culoare:</strong> Incepe alb &rarr; chihlimbar la 150 &rarr; rosu la 50</li>
+            <li><strong>Marime:</strong> Mare, centrul ecranului, imposibil de ignorat</li>
+            <li><strong>Animatie:</strong> Numerele se rostogolesc ca un contor mecanic</li>
+            <li><strong>Optional:</strong> Fiecare scadere declanseaza o zguduire de ecran sau flash</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>Design Sonor</summary>
+        <div class="detail-content">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Element</th><th>Descriere</th></tr></thead>
+              <tbody>
+                <tr><td>Ticait ceas</td><td>Mecanic, nu digital. Ceas de gara vechi. 1 tic/sec accelerand la 4 tic/sec</td></tr>
+                <tr><td>Efecte whoosh</td><td>La fiecare taietura rapida in sectiunile de montaj</td></tr>
+                <tr><td>Hit de bas</td><td>Un singur hit 808 profund la tranzitia liniste-poster (Cadru 8)</td></tr>
+                <tr><td>Baza muzicala</td><td>Piesa stil CDA &mdash; structura clara de build-up si drop</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Variatii</summary>
+        <div class="detail-content">
+          <ul class="styled">
+            <li><strong>Versiunea A &mdash; Stories (15s):</strong> Doar cadrele 1-5, taie la ecranul final</li>
+            <li><strong>Versiunea B &mdash; Reclama (15s):</strong> Cadrele 1, 3, 5, 8, 9. Urgenta maxima, timp minim.</li>
+            <li><strong>Versiunea C &mdash; Completa (28s):</strong> Conform scriptului. Pentru Reels/TikTok.</li>
+          </ul>
+          <div class="info-box warning"><strong>Important:</strong> Linistea de la 0:20 este carligul psihologic. Nu o sari.</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ── Script 04 ── -->
+  <div class="script-card">
+    <div class="script-card-header">
+      <div class="script-num">04</div>
+      <div class="script-info">
+        <h3>Experienta</h3>
+        <div class="script-type">Cinematic / Emotional &mdash; Videoul Principal</div>
+      </div>
+      <div class="script-tags">
+        <span class="tag tag-duration">30 sec</span>
+        <span class="tag tag-format">9:16 + 16:9 prioritar</span>
+        <span class="tag tag-mood">Cinematic &middot; Eteric &middot; Luxos</span>
+      </div>
+    </div>
+    <div class="script-card-body">
+      <p class="body-text"><strong>Colorimetrie:</strong> Tonuri calde aurii, granulatia filmului, lumini moi, umbre adanci. Apus Tulum intalneste noapte de Bucuresti.</p>
+
+      <details open>
+        <summary>Lista de Cadre</summary>
+        <div class="detail-content">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Timp</th><th>Cadru</th><th>Vizual</th><th>Audio</th><th>Text pe Ecran</th></tr></thead>
+              <tbody>
+                <tr><td>0:00–0:04</td><td>1</td><td>Prim-plan extrem: ochi inchisi. Slow motion. Lumina calda pe piele.</td><td>Corzi de oud moi &mdash; o singura nota, reverb</td><td>&mdash;</td></tr>
+                <tr><td>0:04–0:07</td><td>2</td><td>Fum care se ridica in slow motion, retroiluminat de lumina calda de chihlimbar. Abstract.</td><td>Corzile continua + sunet de respiratie</td><td>"Inchide ochii."</td></tr>
+                <tr><td>0:07–0:10</td><td>3</td><td>Maini pe controller DJ, prim-plan extrem. Degete rotind un buton. Adancime de camp mica.</td><td>Prima percutie &mdash; frame drum moale</td><td>"Simte ritmul."</td></tr>
+                <tr><td>0:10–0:13</td><td>4</td><td>Siluete dansand in ceata/fum. Retroiluminate. Ca intr-un vis.</td><td>Melodia intra &mdash; oud sau saz</td><td>"Lasa muzica sa te poarte."</td></tr>
+                <tr><td>0:13–0:17</td><td>5</td><td>Cadru larg: multime din spate, lumini aurii calde. Push-in lent. Fum/ceata.</td><td>Basul intra, groove-ul prinde forma</td><td>&mdash;</td></tr>
+                <tr><td>0:17–0:21</td><td>6</td><td>Logo-ul apare &mdash; format din particule aurii plutitoare. Elegant.</td><td>DROP MELODIC &mdash; groove complet</td><td>"CAFE DE ANATOLIA"</td></tr>
+                <tr><td>0:21–0:25</td><td>7</td><td>Grand Hotel Bucharest &mdash; cadru larg cinematic, noapte. Dolly sau drona.</td><td>Muzica continua</td><td>"Pentru prima data in Bucuresti."</td></tr>
+                <tr><td>0:25–0:30</td><td>8</td><td>Fade in negru cald. Informatiile apar rand pe rand, tipografie eleganta.</td><td>Muzica se rezolva, ultima coada de reverb</td><td>"25 Aprilie 2026" &rarr; "Grand Hotel Bucharest" &rarr; "biletin.ro"</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Voce Narator</summary>
+        <div class="detail-content">
+          <p class="body-text"><strong>Voce:</strong> Masculina, profunda, calda, fara graba. Narrator de documentar intalneste ghid de meditatie.</p>
+          <div class="copy-block"><span class="block-label">Romana</span>[0:04] "Inchide ochii."
+       (pauza 2 secunde)
+[0:07] "Simte ritmul."
+       (pauza 2 secunde)
+[0:10] "Lasa muzica sa te poarte."
+       (pauza 3 secunde)
+[0:17] "Cafe De Anatolia."
+       (pauza)
+[0:21] "Pentru prima data in Bucuresti."</div>
+          <div class="copy-block"><span class="block-label">Alternativa Engleza</span>"Close your eyes."
+"Feel the rhythm."
+"Let the music carry you."
+"Cafe De Anatolia. For the first time in Bucharest."</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Cinematografie &amp; Colorimetrie</summary>
+        <div class="detail-content">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Aspect</th><th>Specificatie</th></tr></thead>
+              <tbody>
+                <tr><td>Rata cadre</td><td>Filmeaza la 60fps sau 120fps, reda la 24fps pentru slow-motion fluid</td></tr>
+                <tr><td>Obiectiv</td><td>50mm sau 85mm pentru prim-planuri (DOF mic). 24mm pentru cadre largi</td></tr>
+                <tr><td>Iluminat</td><td>Doar lumini practice &mdash; lumanari, LED-uri calde, tungsten. Fara lumina rece</td></tr>
+                <tr><td>Fum/ceata</td><td>Esential in fiecare cadru. Masina de ceata, nu fum greu</td></tr>
+                <tr><td>Miscare camera</td><td>Minimala. Dolly-uri lente, push-in-uri. Nimic handheld</td></tr>
+                <tr><td>Raport aspect</td><td>Optional: 2.39:1 letterbox pentru senzatie cinematica</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h5 class="sub">Gradare Culori</h5>
+          <ul class="styled">
+            <li><strong>Umbre:</strong> maro/ciocolatiu profund (nu negru pur)</li>
+            <li><strong>Lumini:</strong> chihlimbar/auriu cald</li>
+            <li><strong>Tonuri medii:</strong> usor desaturate, tonuri de piele calde</li>
+            <li><strong>Granulatie film:</strong> subtila, organica (nu zgomot digital)</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>Targetare Reclame (Facebook/Instagram)</summary>
+        <div class="detail-content">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Parametru</th><th>Valoare</th></tr></thead>
+              <tbody>
+                <tr><td>Varsta</td><td>25&ndash;42</td></tr>
+                <tr><td>Locatie</td><td>Bucuresti + 50km, orase mari din Romania</td></tr>
+                <tr><td>Interese</td><td>Organic house, melodic house, Cafe De Anatolia, Burning Man, yoga, meditatie, world music</td></tr>
+                <tr><td>Plasament</td><td>Feed Instagram, Feed Facebook, Instagram Explore</td></tr>
+                <tr><td>Obiectiv</td><td>Trafic (catre biletin.ro)</td></tr>
+                <tr><td>Buget</td><td>Aloca 40-50% din bugetul total de reclame &mdash; materialul principal</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ── Script 05 ── -->
+  <div class="script-card">
+    <div class="script-card-header">
+      <div class="script-num">05</div>
+      <div class="script-info">
+        <h3>Interviu pe Strada / UGC</h3>
+        <div class="script-type">Organic / Autentic</div>
+      </div>
+      <div class="script-tags">
+        <span class="tag tag-duration">30 sec</span>
+        <span class="tag tag-format">9:16 Prioritate TikTok</span>
+        <span class="tag tag-mood">Casual &middot; Autentic &middot; Nescriptat</span>
+      </div>
+    </div>
+    <div class="script-card-body">
+      <p class="body-text"><strong>Colorimetrie:</strong> Minimala. Lumina naturala. Usor mai calda. Sa para filmare cu telefonul.</p>
+
+      <details>
+        <summary>Lista de Cadre &amp; Dialog</summary>
+        <div class="detail-content">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Timp</th><th>Vizual</th><th>Dialog</th></tr></thead>
+              <tbody>
+                <tr><td>0:00–0:03</td><td>Handheld. Se apropie de Persoana 1 pe o strada aglomerata din Bucuresti.</td><td><strong>Intervievator:</strong> "Hei, ai auzit de Cafe De Anatolia?"</td></tr>
+                <tr><td>0:03–0:06</td><td>Persoana 1 &mdash; tanar/a, stilat/a, surprins/a.</td><td><strong>P1:</strong> "Da, bineinteles! E organic house... e cu totul altceva, frate."</td></tr>
+                <tr><td>0:06–0:10</td><td>Persoana 2 &mdash; alta locatie, animat/a.</td><td><strong>P2:</strong> "Am fost la ei afara, la un festival. Nu e o petrecere, e o experienta."</td></tr>
+                <tr><td>0:10–0:14</td><td>Persoana 3 &mdash; surpriza genuina, ochii se maresc.</td><td><strong>Intervievator:</strong> "Vin in Bucuresti pe 25 aprilie." <strong>P3:</strong> "Stai, serios?! La noi?!"</td></tr>
+                <tr><td>0:14–0:17</td><td>Persoana 4 &mdash; da din cap stiutor.</td><td><strong>P4:</strong> "Grand Hotel Bucharest... o sa fie ceva special."</td></tr>
+                <tr><td>0:17–0:20</td><td>TAIETURA BRUSCA &mdash; negru &rarr; logo CDA + poster. Muzica porneste.</td><td>"25 APRILIE 2026"</td></tr>
+                <tr><td>0:20–0:24</td><td>Montaj rapid: multime / DJ / locatie / fum &amp; lumini.</td><td>"GRAND HOTEL BUCHAREST"</td></tr>
+                <tr><td>0:24–0:27</td><td>Persoana 3 scoate telefonul, apasa.</td><td><strong>P3:</strong> "Gata, iau bilet acum."</td></tr>
+                <tr><td>0:27–0:30</td><td>Ecran final: biletin.ro + "First Wave 100 LEI"</td><td>"BILETE PE BILETIN.RO"</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Replici Alternative</summary>
+        <div class="detail-content">
+          <h5 class="sub">I: "Ai auzit de Cafe De Anatolia?"</h5>
+          <ul class="styled">
+            <li>"Cine n-a auzit? Sunt peste tot pe Instagram."</li>
+            <li>"Da, am ascultat mixurile lor... e altfel de muzica."</li>
+            <li>"Stiu, stiu! Cu muzica aia organica, nu?"</li>
+          </ul>
+          <h5 class="sub">I: "Vin in Bucuresti pe 25 aprilie."</h5>
+          <ul class="styled">
+            <li>"Nu cred! In sfarsit!"</li>
+            <li>"Serios? Unde? Trebuie sa fiu acolo."</li>
+            <li>"De cand asteptam asa ceva in Bucuresti!"</li>
+          </ul>
+          <h5 class="sub">Inchidere:</h5>
+          <ul class="styled">
+            <li>"Iau bilet acum, nu risc."</li>
+            <li>"Daca nu esti acolo, nu existi."</li>
+            <li>"Ma duc, clar."</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>Specificatii Tehnice &amp; Editare</summary>
+        <div class="detail-content">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Aspect</th><th>Specificatie</th></tr></thead>
+              <tbody>
+                <tr><td>Camera</td><td>Telefonul e suficient (iPhone 14+ / Samsung S23+). Asta e ideea.</td></tr>
+                <tr><td>Stabilizare</td><td>Handheld, miscare usoara OK. NU folosi gimbal.</td></tr>
+                <tr><td>Microfon</td><td>Microfon wireless clip-on sau shotgun directional. Claritatea audio conteaza.</td></tr>
+                <tr><td>Iluminat</td><td>Lumina naturala. Golden hour (17:00-19:00) pentru cel mai bun aspect.</td></tr>
+                <tr><td>Locatii</td><td>Centrul Vechi, Calea Victoriei, Herastrau, Piata Universitatii</td></tr>
+                <tr><td>Editare</td><td>Doar jump cuts, zoom subtil pe reactii, subtitrari stil TikTok</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h5 class="sub">Program de Productie</h5>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Pas</th><th>Timp Necesar</th></tr></thead>
+              <tbody>
+                <tr><td>Recunoastere locatii</td><td>30 min</td></tr>
+                <tr><td>Filmare interviuri (10-15 persoane, folosesti cele mai bune 4-5)</td><td>2-3 ore</td></tr>
+                <tr><td>Filmare B-roll sau sursa stock</td><td>1 ora</td></tr>
+                <tr><td>Editare + subtitrari</td><td>4-5 ore</td></tr>
+                <tr><td><strong>Total</strong></td><td><strong>~1 zi</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ DESCRIERI SOCIAL MEDIA ═══════════════════ -->
+<section id="captions">
+  <div class="section-header">
+    <div class="section-number">02 / Descrieri &amp; Hashtag-uri</div>
+    <h2 class="section-title">Texte Social Media</h2>
+    <p class="section-desc">Descrieri gata de copiat pentru fiecare platforma si fiecare script, plus seturi de hashtag-uri.</p>
+  </div>
+
+  <div class="caption-platform">
+    <div class="platform-badge platform-ig">Instagram Reels</div>
+
+    <details open>
+      <summary>Script 01 &mdash; Dezvaluirea Misterului</summary>
+      <div class="detail-content">
+        <div class="copy-block">Cortina se ridica...
+
+Cafe De Anatolia vine in Bucuresti. Prima data. Ever.
+25 Aprilie | Grand Hotel Bucharest
+
+First Wave &mdash; 100 LEI (doar 300 bilete)
+Link in bio @biletin.ro
+
+#CafeDeAnatolia #OrganicHouse #MelodicHouse #BucharestNightlife #GrandHotelBucharest #Electronica #EvenimentBucuresti</div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Script 02 &mdash; Prezentarea Lineup-ului</summary>
+      <div class="detail-content">
+        <div class="copy-block">THE LINEUP is here.
+
+@rialiansonearth
+@billyestebanmusic
+@ketovanharum
+@jasmine
+
+25.04.2026 | Grand Hotel Bucharest
+Bilete: link in bio
+
+#CafeDeAnatolia #Lineup #OrganicHouse #BucharestEvents #MelodicTechno #DeepHouse</div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Script 03 &mdash; Numaratoare Inversa FOMO</summary>
+      <div class="detail-content">
+        <div class="copy-block">300 bilete. First Wave. 100 LEI.
+Numarul scade in fiecare zi.
+
+Cafe De Anatolia | 25 Aprilie | Grand Hotel Bucharest
+Nu mai astepta. Link in bio.
+
+#CafeDeAnatolia #FirstWave #BileteLimitate #Bucuresti #OrganicHouse #GrabYourTickets</div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Script 04 &mdash; Experienta</summary>
+      <div class="detail-content">
+        <div class="copy-block">Inchide ochii. Simte ritmul. Lasa muzica sa te poarte.
+
+Cafe De Anatolia &mdash; pentru prima data in Bucuresti.
+25 Aprilie 2026 | Grand Hotel Bucharest
+
+O noapte. O calatorie. O experienta.
+Bilete: link in bio @biletin.ro
+
+#CafeDeAnatolia #MelodicHouse #OrganicHouse #BucharestNights #MusicExperience #ElectronicMusic</div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Script 05 &mdash; Interviu UGC</summary>
+      <div class="detail-content">
+        <div class="copy-block">Am intrebat oamenii din Bucuresti despre Cafe De Anatolia...
+
+Reactiile spun totul.
+
+25 Aprilie | Grand Hotel Bucharest | First Wave 100 LEI
+Link in bio
+
+#CafeDeAnatolia #StreetInterview #Bucuresti #OrganicHouse #Reactii #BucharestEvents</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="caption-platform">
+    <div class="platform-badge platform-tt">TikTok</div>
+    <div class="copy-block">something is coming to bucharest... cafe de anatolia. 25 aprilie. grand hotel. first wave 100 lei, doar 300 bilete. link in bio #CafeDeAnatolia #OrganicHouse #BucharestNightlife #Bucuresti #fyp #foryou #xyzbca</div>
+    <div class="copy-block">300 bilete. numaratoarea a inceput. cafe de anatolia in bucuresti, 25 aprilie. 100 lei first wave. nu dormi pe ele. link in bio #CafeDeAnatolia #FOMO #BileteLimitate #Bucuresti #fyp #viral</div>
+    <div class="copy-block">am intrebat oamenii de pe strada daca stiu de cafe de anatolia... wait for it #CafeDeAnatolia #StreetInterview #Bucuresti #OrganicHouse #Reactii #fyp #viral</div>
+  </div>
+
+  <div class="caption-platform">
+    <div class="platform-badge platform-fb">Facebook Reclama &amp; Eveniment</div>
+    <details open>
+      <summary>Text Reclama (Script 04)</summary>
+      <div class="detail-content">
+        <div class="copy-block">Cafe De Anatolia ajunge in Bucuresti.
+
+Pentru prima data, unul dintre cele mai influente concepte muzicale din lumea Organic &amp; Melodic House transforma Grand Hotel Bucharest intr-un templu al sunetului.
+
+LINE UP:
+Rialians On Earth | Billy Esteban | Keto van Harum | Jasmine
+
+25 Aprilie 2026 | 22:00 - 04:00
+Grand Hotel Bucharest
+
+First Wave &mdash; 100 LEI (doar 300 bilete disponibile)
+Bilete pe biletin.ro</div>
+        <p class="body-text"><strong>Titlu:</strong> Cafe De Anatolia Showcase &mdash; Bucuresti<br>
+        <strong>Descriere:</strong> 25 Aprilie | Grand Hotel Bucharest | Bilete de la 100 LEI<br>
+        <strong>Buton CTA:</strong> Ia Bilete</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Descriere Eveniment Facebook</summary>
+      <div class="detail-content">
+        <div class="copy-block">CAFE DE ANATOLIA SHOWCASE &mdash; BUCURESTI
+
+25 Aprilie 2026 | 22:00 &mdash; 04:00
+Grand Hotel Bucharest
+
+Unul dintre cele mai influente concepte muzicale din lumea Organic &amp; Melodic House vine pentru prima data in Bucuresti.
+
+LINE UP:
+Rialians On Earth | Billy Esteban | Keto van Harum | Jasmine
+
+Pregateste-te pentru o noapte in care muzica devine poveste, iar fiecare beat te poarta intr-o calatorie prin universul Cafe De Anatolia &mdash; un mix unic de sunete organice, groove-uri mistice si melodii care ating sufletul.
+
+BILETE:
+First Wave &mdash; 100 LEI (limitat la 300 bilete)
+Link: biletin.ro/bilete/cafe-de-anatolia-showcase-1
+
+Organizat de Elevate Records</div>
+      </div>
+    </details>
+  </div>
+
+  <h5 class="sub" style="margin-top: 40px;">Seturi de Hashtag-uri</h5>
+
+  <div class="hashtag-group">
+    <div class="hashtag-group-label">Primare (la fiecare postare)</div>
+    <div class="chips">
+      <span class="chip">#CafeDeAnatolia</span>
+      <span class="chip">#OrganicHouse</span>
+      <span class="chip">#MelodicHouse</span>
+      <span class="chip">#GrandHotelBucharest</span>
+      <span class="chip">#Bucuresti</span>
+      <span class="chip">#BucharestEvents</span>
+    </div>
+  </div>
+
+  <div class="hashtag-group">
+    <div class="hashtag-group-label">Secundare (rotatie)</div>
+    <div class="chips">
+      <span class="chip">#MelodicTechno</span>
+      <span class="chip">#DeepHouse</span>
+      <span class="chip">#ElectronicMusic</span>
+      <span class="chip">#BucharestNightlife</span>
+      <span class="chip">#EvenimentBucuresti</span>
+      <span class="chip">#MuzicaElectronica</span>
+      <span class="chip">#NightlifeBucharest</span>
+      <span class="chip">#RomaniaEvents</span>
+    </div>
+  </div>
+
+  <div class="hashtag-group">
+    <div class="hashtag-group-label">Comunitate de Nisa</div>
+    <div class="chips">
+      <span class="chip">#OrganicDowntempo</span>
+      <span class="chip">#EthnoElectronica</span>
+      <span class="chip">#WorldMusic</span>
+      <span class="chip">#DesertVibes</span>
+      <span class="chip">#TulumVibes</span>
+      <span class="chip">#MysticGrooves</span>
+      <span class="chip">#SacredDance</span>
+    </div>
+  </div>
+
+  <div class="hashtag-group">
+    <div class="hashtag-group-label">Descoperire TikTok</div>
+    <div class="chips">
+      <span class="chip">#fyp</span>
+      <span class="chip">#foryou</span>
+      <span class="chip">#viral</span>
+      <span class="chip">#xyzbca</span>
+      <span class="chip">#foryoupage</span>
+    </div>
+  </div>
+
+  <h5 class="sub" style="margin-top: 40px;">Template-uri Stories</h5>
+  <div class="variant-grid">
+    <div class="variant-card"><h4>Story 1 &mdash; Teaser</h4><div class="ad-text">"Ceva se intampla pe 25 aprilie..."
+[fundal inchis, logo CDA mic, abia vizibil]</div></div>
+    <div class="variant-card"><h4>Story 2 &mdash; Dezvaluire</h4><div class="ad-text">"CAFE DE ANATOLIA IN BUCURESTI"
+[poster eveniment, swipe up / link sticker]</div></div>
+    <div class="variant-card"><h4>Story 3 &mdash; Numaratoare</h4><div class="ad-text">"Mai sunt X zile"
+[countdown sticker spre 25 Aprilie 2026, 22:00]</div></div>
+    <div class="variant-card"><h4>Story 4 &mdash; Dovada Sociala</h4><div class="ad-text">"First Wave aproape sold out..."
+[screenshot pagina bilete sau contor]</div></div>
+    <div class="variant-card"><h4>Story 5 &mdash; Spotlight Artist</h4><div class="ad-text">"Stii cine vine?"
+[foto artist, nume, buton play spre muzica lor]</div></div>
+    <div class="variant-card"><h4>Story 6 &mdash; Ziua Evenimentului</h4><div class="ad-text">"TONIGHT. See you there."
+[foto locatie, energie]</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ STRATEGIE ═══════════════════ -->
+<section id="strategy">
+  <div class="section-header">
+    <div class="section-number">03 / Strategia Campaniei</div>
+    <h2 class="section-title">Plan de Promovare pe 4 Saptamani</h2>
+    <p class="section-desc">Cronologie completa saptamana cu saptamana, alocare buget reclame, targetare audienta, strategie de influenceri si indicatori de performanta.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="week-block">
+      <h4>Saptamana 1 &mdash; Faza Teaser</h4>
+      <div class="week-dates">31 Mar &ndash; 6 Apr</div>
+      <div class="week-goal">Construieste curiozitatea. Nu dezvalui totul inca.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Zi</th><th>Platforma</th><th>Continut</th><th>Script</th></tr></thead>
+          <tbody>
+            <tr><td>Luni</td><td>IG Stories</td><td>Teaser intuneric: "Ceva se apropie..."</td><td>Pre-Script 01</td></tr>
+            <tr><td>Marti</td><td>TikTok</td><td>Clip mister 10s &mdash; lumanare, fum, oud, "?"</td><td>Script 01 (scurt)</td></tr>
+            <tr><td>Miercuri</td><td>IG Stories</td><td>"Bucuresti. Aprilie. Ramai pe fir."</td><td>Template story</td></tr>
+            <tr><td>Joi</td><td>IG Reel</td><td>Script 01 complet (30s)</td><td>Script 01</td></tr>
+            <tr><td>Vineri</td><td>Facebook</td><td>Pagina de eveniment devine LIVE</td><td>Text FB Event</td></tr>
+            <tr><td>Sambata</td><td>IG Stories</td><td>Sticker numaratoare: "25 Aprilie"</td><td>Template story</td></tr>
+            <tr><td>Duminica</td><td>TikTok</td><td>Re-postare Script 01 varianta</td><td>Script 01 alt</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box tip"><strong>Platit:</strong> Campanie Facebook/Instagram de awareness (Script 01 ca reclama video). Buget: 20% din total.</div>
+    </div>
+
+    <div class="week-block">
+      <h4>Saptamana 2 &mdash; Faza Dezvaluire</h4>
+      <div class="week-dates">7 &ndash; 13 Apr</div>
+      <div class="week-goal">Dezvaluire completa. Anunt lineup. Impingere vanzari bilete.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Zi</th><th>Platforma</th><th>Continut</th><th>Script</th></tr></thead>
+          <tbody>
+            <tr><td>Luni</td><td>IG Reel + TikTok</td><td>Script 02 &mdash; Prezentare Lineup</td><td>Script 02</td></tr>
+            <tr><td>Luni</td><td>IG Stories</td><td>Spotlight-uri individuale artisti (4 story-uri)</td><td>Template story 5</td></tr>
+            <tr><td>Marti</td><td>Facebook</td><td>Poster lineup + descriere detaliata</td><td>Text reclama</td></tr>
+            <tr><td>Miercuri</td><td>IG Stories</td><td>"First Wave &mdash; 100 LEI" + link sticker</td><td>Template story</td></tr>
+            <tr><td>Joi</td><td>TikTok</td><td>Script 05 &mdash; Interviu UGC</td><td>Script 05</td></tr>
+            <tr><td>Vineri</td><td>IG Reel</td><td>Script 04 &mdash; Experienta</td><td>Script 04</td></tr>
+            <tr><td>Sambata</td><td>IG Stories</td><td>Repost reactii fani</td><td>UGC</td></tr>
+            <tr><td>Duminica</td><td>Facebook</td><td>Boost postare lineup + retarget vieweri Sapt. 1</td><td>Platit</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box tip"><strong>Platit:</strong> Campanie trafic cu Script 04 targetand 25-42, Bucuresti + orase RO. Buget: 30% din total.</div>
+    </div>
+
+    <div class="week-block">
+      <h4>Saptamana 3 &mdash; Faza Urgenta</h4>
+      <div class="week-dates">14 &ndash; 20 Apr</div>
+      <div class="week-goal">FOMO. Dovada sociala. Deficit bilete.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Zi</th><th>Platforma</th><th>Continut</th><th>Script</th></tr></thead>
+          <tbody>
+            <tr><td>Luni</td><td>IG Reel + TikTok</td><td>Script 03 &mdash; Numaratoare FOMO</td><td>Script 03</td></tr>
+            <tr><td>Marti</td><td>IG Stories</td><td>"Sub X bilete First Wave ramase"</td><td>Template story 4</td></tr>
+            <tr><td>Miercuri</td><td>TikTok</td><td>BTS: pregatire locatie / proba sunet</td><td>Continut BTS</td></tr>
+            <tr><td>Joi</td><td>IG Reel</td><td>Script 05 v2 cu reactii noi</td><td>Script 05 v2</td></tr>
+            <tr><td>Vineri</td><td>IG Stories</td><td>"Weekend-ul asta iei bilet sau regreti?"</td><td>Urgenta</td></tr>
+            <tr><td>Sambata</td><td>FB + IG</td><td>"SECOND WAVE incoming" (daca First Wave s-a vandut)</td><td>Escaladare pret</td></tr>
+            <tr><td>Duminica</td><td>Toate</td><td>"1 SAPTAMANA RAMASA" numaratoare</td><td>Toate formatele</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box warning"><strong>Platit:</strong> Retargetare &mdash; Script 03 catre toti care au vizionat Script 01/04 dar nu au dat click. Buget: 30%.</div>
+    </div>
+
+    <div class="week-block">
+      <h4>Saptamana 4 &mdash; Impuls Final</h4>
+      <div class="week-dates">21 &ndash; 25 Apr</div>
+      <div class="week-goal">Ultima sansa. Urgenta maxima. Hype in ziua evenimentului.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Zi</th><th>Platforma</th><th>Continut</th></tr></thead>
+          <tbody>
+            <tr><td>Luni (21)</td><td>Toate</td><td>"4 ZILE" &mdash; numaratoare zilnica de aici</td></tr>
+            <tr><td>Marti (22)</td><td>IG Stories</td><td>Preluare de artist (daca e posibil)</td></tr>
+            <tr><td>Miercuri (23)</td><td>TikTok</td><td>"POV: realizezi ca e joi si inca n-ai bilet"</td></tr>
+            <tr><td>Joi (24)</td><td>Toate</td><td>"MAINE." &mdash; numaratoare finala + story-uri "Ultima sansa" la fiecare 3-4h</td></tr>
+            <tr><td>Vineri (25)</td><td>Toate</td><td>"TONIGHT." &mdash; pregatire locatie, proba sunet, deschidere usi, story-uri live</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box warning"><strong>Platit:</strong> Ultimele 3 zile: creste bugetul 2x. Retarget PE TOATA LUMEA. Script 03 + 04. Buget: 20% (condensat in 3 zile).</div>
+    </div>
+  </div>
+
+  <h5 class="sub" style="margin-top: 48px;">Alocare Buget</h5>
+  <div style="max-width: 600px;">
+    <div class="budget-row"><div class="budget-label"><span>Sapt. 1 &mdash; Awareness (Script 01)</span><span>20%</span></div><div class="budget-bar"><div class="budget-fill" style="width:20%"></div></div></div>
+    <div class="budget-row"><div class="budget-label"><span>Sapt. 2 &mdash; Trafic (Script 04)</span><span>30%</span></div><div class="budget-bar"><div class="budget-fill" style="width:30%"></div></div></div>
+    <div class="budget-row"><div class="budget-label"><span>Sapt. 3 &mdash; Retargetare (Script 03)</span><span>30%</span></div><div class="budget-bar"><div class="budget-fill" style="width:30%"></div></div></div>
+    <div class="budget-row"><div class="budget-label"><span>Sapt. 4 &mdash; Impuls Final (03 + 04)</span><span>20%</span></div><div class="budget-bar"><div class="budget-fill" style="width:20%"></div></div></div>
+  </div>
+
+  <h5 class="sub" style="margin-top: 48px;">Audienta Tinta</h5>
+  <div class="variant-grid">
+    <div class="variant-card variant-a">
+      <div class="variant-label">Audienta 1</div>
+      <h4>Nucleu &mdash; Fani Organic House</h4>
+      <div class="ad-text">Varsta: 24&ndash;40
+Locatie: Bucuresti + 30km
+Interese: Cafe De Anatolia, Organic House, Melodic House, Burning Man, Tulum, world music
+Reach estimat: 50K&ndash;150K</div>
+    </div>
+    <div class="variant-card variant-b">
+      <div class="variant-label">Audienta 2</div>
+      <h4>Larga &mdash; Viata de Noapte/Muzica</h4>
+      <div class="ad-text">Varsta: 22&ndash;42
+Locatie: Bucuresti + Cluj, Timisoara, Iasi, Constanta, Brasov
+Interese: Viata de noapte, DJ, electronica, house, Cercle, Boiler Room
+Reach estimat: 200K&ndash;500K</div>
+    </div>
+    <div class="variant-card variant-c">
+      <div class="variant-label">Audienta 3</div>
+      <h4>Lookalike</h4>
+      <div class="ad-text">Bazat pe: Cumparatori de bilete sau vizitatori site
+Locatie: Romania
+Lookalike: 1-3%</div>
+    </div>
+    <div class="variant-card variant-d">
+      <div class="variant-label">Audienta 4</div>
+      <h4>Retargetare</h4>
+      <div class="ad-text">Vizualizatori video (50%+ vizionat)
+Vizitatori site (pagina eveniment biletin.ro)
+Interactiuni IG/FB (like, comentariu, salvat, distribuit)</div>
+    </div>
+  </div>
+
+  <h5 class="sub" style="margin-top: 48px;">Indicatori de Performanta (KPI)</h5>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-value">300</div><div class="kpi-label">First Wave Sold Out</div></div>
+    <div class="kpi-card"><div class="kpi-value">50K+</div><div class="kpi-label">Vizualizari Organice</div></div>
+    <div class="kpi-card"><div class="kpi-value">100K+</div><div class="kpi-label">Vizualizari Platite</div></div>
+    <div class="kpi-card"><div class="kpi-value">3.000+</div><div class="kpi-label">Click-uri pe Link</div></div>
+    <div class="kpi-card"><div class="kpi-value">5-8%</div><div class="kpi-label">Rata de Conversie</div></div>
+    <div class="kpi-card"><div class="kpi-value">1.000+</div><div class="kpi-label">RSVP-uri FB Event</div></div>
+  </div>
+
+  <h5 class="sub" style="margin-top: 32px;">Structura UTM</h5>
+  <div class="copy-block"><span class="block-label">Parametri UTM</span>?utm_source=instagram&amp;utm_medium=reel&amp;utm_campaign=cda_showcase&amp;utm_content=script01
+?utm_source=tiktok&amp;utm_medium=organic&amp;utm_campaign=cda_showcase&amp;utm_content=script05
+?utm_source=facebook&amp;utm_medium=paid&amp;utm_campaign=cda_showcase&amp;utm_content=script04</div>
+
+  <h5 class="sub" style="margin-top: 48px;">Strategie Influenceri &amp; Parteneriate</h5>
+  <div class="variant-grid">
+    <div class="variant-card">
+      <h4>Micro-influenceri (5K&ndash;50K)</h4>
+      <div class="ad-text"><strong>Cine:</strong> Bloggeri viata de noapte Bucuresti, pagini muzica, creatori lifestyle
+<strong>Deal:</strong> 2 bilete gratuite + mentiune backstage pentru 1 Reel + 3 Stories
+<strong>Tinta:</strong> 5-10 influenceri
+<strong>Cand:</strong> Saptamana 2-3</div>
+    </div>
+    <div class="variant-card">
+      <h4>Pagini Muzica / Comunitati</h4>
+      <div class="ad-text"><strong>Cine:</strong> Grupuri FB muzica electronica romaneasca, pagini IG, comunitati DJ locale
+<strong>Deal:</strong> Cross-promovare, listari evenimente, postari distribuite
+<strong>Cand:</strong> Din Saptamana 1</div>
+    </div>
+    <div class="variant-card">
+      <h4>Cross-Promovare Artisti</h4>
+      <div class="ad-text"><strong>Cine:</strong> Rialians On Earth, Billy Esteban, Keto van Harum, Jasmine
+<strong>Cerere:</strong> Distribuie poster + link bilete pe canalele lor
+<strong>Cand:</strong> Saptamana 2 (dezvaluire lineup)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TEXTE RECLAME ═══════════════════ -->
+<section id="ads">
+  <div class="section-header">
+    <div class="section-number">04 / Variante Texte Reclame</div>
+    <h2 class="section-title">Reclame Facebook &amp; Instagram</h2>
+    <p class="section-desc">6 variante de text pentru testare A/B, plus template-uri de retargetare. Toate duc catre biletin.ro.</p>
+  </div>
+
+  <div class="variant-grid">
+    <div class="variant-card variant-a">
+      <div class="variant-label">Varianta A</div>
+      <h4>Emotional / Experienta</h4>
+      <div class="ad-text">Cafe De Anatolia vine in Bucuresti. Pentru prima data.
+
+O noapte in care muzica devine calatorie. Ritmuri organice, melodii hipnotice si o energie pe care o simti in fiecare celula.
+
+LINE UP:
+Rialians On Earth | Billy Esteban | Keto van Harum | Jasmine
+
+25 Aprilie 2026 | Grand Hotel Bucharest
+First Wave &mdash; 100 LEI (doar 300 bilete)
+
+Fii parte din poveste.</div>
+      <div class="ad-meta"><strong>Titlu:</strong> Cafe De Anatolia Showcase &mdash; Bucuresti<br><strong>CTA:</strong> Ia Bilete</div>
+    </div>
+
+    <div class="variant-card variant-b">
+      <div class="variant-label">Varianta B</div>
+      <h4>Direct / Urgenta</h4>
+      <div class="ad-text">300 de bilete First Wave. 100 LEI fiecare.
+Cand se termina, pretul creste.
+
+Cafe De Anatolia | 25 Aprilie | Grand Hotel Bucharest
+
+Rialians On Earth
+Billy Esteban
+Keto van Harum
+Jasmine
+
+Nu astepta. Ia-ti biletul acum.</div>
+      <div class="ad-meta"><strong>Titlu:</strong> First Wave &mdash; 100 LEI | Bilete Limitate<br><strong>CTA:</strong> Ia Bilete</div>
+    </div>
+
+    <div class="variant-card variant-c">
+      <div class="variant-label">Varianta C</div>
+      <h4>Dovada Sociala / Credibilitate</h4>
+      <div class="ad-text">Cafe De Anatolia &mdash; brand-ul care a cucerit Tulum, Mykonos, Dubai si festivalurile din intreaga lume &mdash; vine pentru prima data in Romania.
+
+Un showcase exclusiv la Grand Hotel Bucharest cu:
+Rialians On Earth | Billy Esteban | Keto van Harum | Jasmine
+
+25 Aprilie 2026 | 22:00 &mdash; 04:00
+First Wave: 100 LEI (limitat)
+
+Bucurestiul nu a mai vazut asa ceva.</div>
+      <div class="ad-meta"><strong>Titlu:</strong> Cafe De Anatolia &mdash; Prima Data in Romania<br><strong>CTA:</strong> Ia Bilete</div>
+    </div>
+
+    <div class="variant-card variant-d">
+      <div class="variant-label">Varianta D</div>
+      <h4>Carlig cu Intrebare</h4>
+      <div class="ad-text">Ai auzit de Cafe De Anatolia?
+
+Unul dintre cele mai mari concepte de Organic House din lume. Au umplut scene din Tulum pana in Bali. Si acum vin in Bucuresti.
+
+25 Aprilie | Grand Hotel Bucharest
+Rialians On Earth | Billy Esteban | Keto van Harum | Jasmine
+
+First Wave &mdash; 100 LEI. Doar 300 de bilete la acest pret.</div>
+      <div class="ad-meta"><strong>Titlu:</strong> Stiai ca vin in Bucuresti?<br><strong>CTA:</strong> Afla Mai Multe</div>
+    </div>
+
+    <div class="variant-card variant-e">
+      <div class="variant-label">Varianta E</div>
+      <h4>Scurt / Percutant</h4>
+      <div class="ad-text">Cafe De Anatolia. Bucuresti. 25 Aprilie.
+Grand Hotel Bucharest.
+First Wave: 100 LEI.
+Nu dormi pe ele.</div>
+      <div class="ad-meta"><strong>Titlu:</strong> 25 Aprilie | Grand Hotel Bucharest<br><strong>CTA:</strong> Ia Bilete</div>
+    </div>
+
+    <div class="variant-card variant-f">
+      <div class="variant-label">Varianta F</div>
+      <h4>Limbaj Casual / Tineresc (22-30)</h4>
+      <div class="ad-text">Bro, Cafe De Anatolia vine in Bucuresti si nimeni nu e pregatit.
+
+Organic house de la artistii care au rupt scene peste tot in lume. Grand Hotel Bucharest. 25 Aprilie.
+
+First Wave e 100 lei si sunt doar 300 de bilete. Dupa aia, creste pretul.
+
+Cine vine?</div>
+      <div class="ad-meta"><strong>Titlu:</strong> Cafe De Anatolia in Bucuresti<br><strong>CTA:</strong> Ia Bilete</div>
+    </div>
+  </div>
+
+  <h5 class="sub" style="margin-top: 48px;">Plan Testare A/B</h5>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Test</th><th>Varianta A</th><th>vs Varianta B</th><th>Metrica</th></tr></thead>
+      <tbody>
+        <tr><td>Test 1</td><td>Emotional (A)</td><td>Urgenta (B)</td><td>CTR + Conversii</td></tr>
+        <tr><td>Test 2</td><td>Castigatorul Test 1</td><td>Dovada Sociala (C)</td><td>CTR + Conversii</td></tr>
+        <tr><td>Test 3</td><td>Castigatorul Test 2</td><td>Intrebare (D)</td><td>CTR + Conversii</td></tr>
+        <tr><td>Test 4</td><td>Castigatorul Test 3</td><td>Casual (F) &mdash; doar audienta tanara</td><td>CTR + Conversii</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="body-text" style="margin-top: 12px;">Ruleaza fiecare test 3-5 zile cu buget egal. Opreste perdantul, scaleaza castigatorul.</p>
+
+  <h5 class="sub" style="margin-top: 48px;">Texte Retargetare (Saptamana 3-4)</h5>
+  <div class="variant-grid">
+    <div class="variant-card">
+      <h4>Au vizionat video, n-au dat click</h4>
+      <div class="ad-text">Ai vazut. Ai simtit. Acum e momentul.
+
+Cafe De Anatolia | 25 Aprilie | Grand Hotel Bucharest
+
+Biletele First Wave sunt aproape epuizate.
+Nu lasa pe altcineva sa ia locul tau.</div>
+    </div>
+    <div class="variant-card">
+      <h4>Au vizitat biletin.ro, n-au cumparat</h4>
+      <div class="ad-text">Ai fost la un pas de bilet.
+
+Cafe De Anatolia | 25 Aprilie | Grand Hotel Bucharest
+First Wave &mdash; 100 LEI. Cate mai sunt?
+
+Finalizeaza acum. Inainte sa fie prea tarziu.</div>
+    </div>
+    <div class="variant-card">
+      <h4>Au interactionat (like/comentariu/share)</h4>
+      <div class="ad-text">Ti-a placut ce ai vazut?
+
+Transforma like-ul intr-un bilet.
+Cafe De Anatolia | 25 Aprilie | Grand Hotel Bucharest
+
+First Wave: 100 LEI. Numarul scade zilnic.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PROMPTURI AI ═══════════════════ -->
+<section id="ai-prompts">
+  <div class="section-header">
+    <div class="section-number">05 / Prompturi Video AI</div>
+    <h2 class="section-title">Generare Video cu AI</h2>
+    <p class="section-desc">Prompturi gata de folosit pentru Runway Gen-3, Pika, Kling, Sora sau Minimax cand nu ai filmare reala disponibila.</p>
+  </div>
+
+  <h5 class="sub">Script 01 &mdash; Dezvaluirea Misterului</h5>
+  <div class="prompt-block"><div class="prompt-title">Cadru 1 &mdash; Prim-plan Flacara Lumanare</div><div class="prompt-text">Extreme close-up of a single flickering candle flame against a pure black background. Warm amber light. Slow motion. Shallow depth of field. Cinematic 4K. The flame dances gently, casting soft golden light. No other objects visible. Moody, mysterious atmosphere.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Cadru 2 &mdash; Particule de Nisip in Lumina</div><div class="prompt-text">Golden sand particles floating slowly through a beam of warm amber light against a dark background. Macro photography style. Particles catch the light and glow. Dreamlike, ethereal atmosphere. Slow motion. Black background. Cinematic lighting.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Cadru 3 &mdash; Silueta DJ</div><div class="prompt-text">Silhouette of a DJ standing behind a mixing console, backlit by warm amber and golden light. Smoke and haze fill the air. The figure is dark, only the outline visible. Moody, mysterious. Slow motion. Wide shot. Concert/club atmosphere. Cinematic.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Cadru 6 &mdash; Energia Multimii</div><div class="prompt-text">Crowd at an intimate music event, hands raised, bathed in warm golden and amber light. Smoke and haze in the air. Shot from behind the crowd looking toward the stage. Slow motion. Cinematic. Organic house music atmosphere. Elegant venue, not a festival.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Cadru 7 &mdash; Exterior Hotel de Lux Noaptea</div><div class="prompt-text">Grand luxury hotel building exterior at night. Warm lights glowing from windows. Classical European architecture. Bucharest style. Slight mist in the air. Cinematic wide shot. Elegant, prestigious atmosphere. Night photography style. 4K.</div></div>
+
+  <h5 class="sub">Script 02 &mdash; Fundaluri Artisti</h5>
+  <div class="prompt-block"><div class="prompt-title">Fundal Organic Abstract</div><div class="prompt-text">Abstract slow-moving organic shapes in warm amber and gold tones against a dark background. Like liquid gold flowing in slow motion. Ethereal, hypnotic. Could be smoke, water, or abstract light. Cinematic. Perfect for text overlay. Loop-able.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Vizualizare Unde Sonore</div><div class="prompt-text">Audio waveform visualization in golden light against dark background. Pulsing rhythmically. Organic, smooth movement. Not digital/sharp &mdash; soft, flowing lines that react to imaginary music. Warm tones. Cinematic. Abstract.</div></div>
+
+  <h5 class="sub">Script 03 &mdash; Montaj FOMO</h5>
+  <div class="prompt-block"><div class="prompt-title">Prim-plan Maini DJ</div><div class="prompt-text">Close-up of DJ hands on mixing console, pressing buttons and turning knobs. Fast, energetic movement. Colorful LED lights reflecting off the equipment. Shallow depth of field. Club atmosphere. Night. Cinematic.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Difuzor Bas Vibrand</div><div class="prompt-text">Bass speaker vibrating with powerful sound waves. Close-up. You can see the cone moving. Dark environment with subtle colored light. Raw, powerful energy. Slow motion but feels intense. Cinematic.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Explozie de Confetti</div><div class="prompt-text">Confetti explosion at a concert/club event. Golden and white confetti raining down on an excited crowd. Warm lighting. Slow motion. Euphoric atmosphere. Cinematic 4K.</div></div>
+
+  <h5 class="sub">Script 04 &mdash; Cadre Cinematice</h5>
+  <div class="prompt-block"><div class="prompt-title">Prim-plan Ochi</div><div class="prompt-text">Extreme close-up of a person's closed eyes. Warm golden light on skin. Every detail visible &mdash; eyelashes, skin texture. Serene, peaceful expression. Slow motion. The eyes slowly open. Shallow depth of field. Cinematic. Warm color palette.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Fum Abstract</div><div class="prompt-text">Smoke rising slowly in a beam of warm amber light. Dark background. The smoke curls and twists organically, almost like a living thing. Slow motion. Abstract, meditative. Could be incense or haze machine. Cinematic macro.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Siluete Dansand</div><div class="prompt-text">Two or three people dancing in slow motion, seen as silhouettes against warm backlight. Smoke/haze in the air. Their movements are fluid, graceful. Intimate club or event space setting. Not a big festival &mdash; small, elegant. Cinematic. Dreamy.</div></div>
+
+  <h5 class="sub">Dezvaluire Logo &amp; B-Roll</h5>
+  <div class="prompt-block"><div class="prompt-title">Particule Aurii Convergente</div><div class="prompt-text">Millions of tiny golden particles floating and converging toward the center of the frame against a pure black background. They slowly form a shape (leave space for logo overlay). Magical, ethereal. Like golden dust being pulled by gravity. Slow motion. Cinematic 4K.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Prim-plan Instrument Oud</div><div class="prompt-text">Close-up of hands playing an oud (Middle Eastern string instrument). Warm lighting. Wooden texture of the instrument visible. Fingers plucking strings. Shallow depth of field. Cinematic. Warm, intimate atmosphere.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Noapte Mistica in Desert</div><div class="prompt-text">Desert landscape at night under a starry sky. Warm campfire light in the distance. Sand dunes with soft golden light. Peaceful, mystical atmosphere. Wide shot. Cinematic. The kind of place where organic house music would play.</div></div>
+  <div class="prompt-block"><div class="prompt-title">Peisaj Urban Bucuresti Noaptea</div><div class="prompt-text">Bucharest city skyline at night. Classical European architecture lit up. Calea Victoriei or similar grand boulevard. Cars passing with light trails. Cinematic drone shot, slow movement. Warm street lights. Elegant, cosmopolitan atmosphere.</div></div>
+
+  <div class="info-box tip" style="margin-top: 32px;">
+    <strong>Sfaturi:</strong> Foloseste cuvinte cheie consistente ("cinematic, warm amber, golden, slow motion, 4K"). Evita fetele generate de AI &mdash; foloseste siluete si maini. Genereaza mai lung decat ai nevoie, taie pe beat. Aplica gradare de culori consistenta in DaVinci Resolve dupa pentru a unifica toate clipurile.
+  </div>
+</section>
+
+<!-- ═══════════════════ EMAIL / SMS ═══════════════════ -->
+<section id="messaging">
+  <div class="section-header">
+    <div class="section-number">06 / Email, WhatsApp &amp; SMS</div>
+    <h2 class="section-title">Mesaje Directe</h2>
+    <p class="section-desc">Template-uri gata de trimis pentru broadcast-uri WhatsApp, campanii email si blast-uri SMS.</p>
+  </div>
+
+  <h5 class="sub">Broadcast-uri WhatsApp</h5>
+
+  <div class="msg-card">
+    <h4>Mesaj 1 &mdash; Anunt</h4>
+    <div class="msg-timing">Saptamana 1</div>
+    <div class="msg-body">Cafe De Anatolia vine in Bucuresti!
+
+25 Aprilie 2026 | Grand Hotel Bucharest
+
+LINE UP:
+Rialians On Earth
+Billy Esteban
+Keto van Harum
+Jasmine
+
+First Wave &mdash; 100 LEI (doar 300 bilete)
+
+Bilete: biletin.ro/bilete/cafe-de-anatolia-showcase-1
+
+Trimite mai departe daca ai prieteni care trebuie sa fie acolo!</div>
+  </div>
+
+  <div class="msg-card">
+    <h4>Mesaj 2 &mdash; Urgenta</h4>
+    <div class="msg-timing">Saptamana 3</div>
+    <div class="msg-body">Update rapid: biletele First Wave la Cafe De Anatolia (25 Aprilie, Grand Hotel Bucharest) se vand repede.
+
+100 LEI &mdash; doar cat mai sunt la pretul asta.
+
+Ia-ti acum: biletin.ro/bilete/cafe-de-anatolia-showcase-1
+
+Dupa First Wave, pretul creste. Nu zic ca trebuie sa te grabesti... dar cam trebuie.</div>
+  </div>
+
+  <div class="msg-card">
+    <h4>Mesaj 3 &mdash; Ultima Sansa</h4>
+    <div class="msg-timing">Saptamana 4</div>
+    <div class="msg-body">ULTIMA SAPTAMANA.
+
+Cafe De Anatolia &mdash; 25 Aprilie &mdash; Grand Hotel Bucharest.
+
+Daca nu ti-ai luat bilet, acum e momentul.
+
+biletin.ro/bilete/cafe-de-anatolia-showcase-1
+
+Ne vedem acolo!</div>
+  </div>
+
+  <h5 class="sub" style="margin-top: 48px;">Campanii Email</h5>
+
+  <div class="msg-card">
+    <h4>Email 1 &mdash; Anunt Lansare</h4>
+    <div class="msg-timing">Subiecte (testare A/B):</div>
+    <ul class="styled" style="margin-bottom: 16px;">
+      <li>"Cafe De Anatolia vine in Bucuresti &mdash; bilete disponibile acum"</li>
+      <li>"25 Aprilie. Grand Hotel Bucharest. Esti pregatit?"</li>
+      <li>"First Wave: 100 LEI &mdash; doar 300 bilete"</li>
+    </ul>
+    <div class="msg-body">Salut,
+
+Cafe De Anatolia &mdash; unul dintre cele mai influente concepte muzicale din lumea Organic &amp; Melodic House &mdash; vine pentru prima data in Bucuresti.
+
+DATA: 25 Aprilie 2026, 22:00 &mdash; 04:00
+LOCATIE: Grand Hotel Bucharest
+
+LINE UP:
+- Rialians On Earth
+- Billy Esteban
+- Keto van Harum
+- Jasmine
+
+BILETE FIRST WAVE: 100 LEI
+Sunt doar 300 de bilete disponibile la acest pret.
+
+[BUTON: IA-TI BILETUL ACUM]
+
+Aceasta nu e doar o petrecere. E o experienta muzicala, o calatorie, o noapte in care energia Bucurestiului se intalneste cu spiritul Cafe De Anatolia.
+
+Be There.
+&mdash; Elevate Records</div>
+  </div>
+
+  <div class="msg-card">
+    <h4>Email 2 &mdash; Reminder / Urgenta</h4>
+    <div class="msg-timing">Saptamana 3 &nbsp;&middot;&nbsp; Subiect: "Biletele First Wave sunt aproape epuizate"</div>
+    <div class="msg-body">Stiai ca biletele First Wave la Cafe De Anatolia Showcase sunt aproape sold out?
+
+100 LEI &mdash; pretul asta nu mai tine mult.
+
+25 Aprilie | Grand Hotel Bucharest
+Rialians On Earth | Billy Esteban | Keto van Harum | Jasmine
+
+[BUTON: ULTIMELE BILETE FIRST WAVE]
+
+Nu rata sansa de a fi parte din prima editie Cafe De Anatolia in Bucuresti.
+
+&mdash; Elevate Records</div>
+  </div>
+
+  <div class="msg-card">
+    <h4>Email 3 &mdash; Ultima Sansa</h4>
+    <div class="msg-timing">Cu o zi inainte &nbsp;&middot;&nbsp; Subiect: "MAINE: Cafe De Anatolia, Grand Hotel Bucharest"</div>
+    <div class="msg-body">E aici.
+
+Cafe De Anatolia Showcase &mdash; MAINE, 25 Aprilie, ora 22:00
+Grand Hotel Bucharest
+
+Daca inca nu ti-ai luat bilet, mai sunt cateva disponibile.
+
+[BUTON: ULTIMELE BILETE]
+
+Rialians On Earth | Billy Esteban | Keto van Harum | Jasmine
+
+Dress code: elegant casual.
+Program: 22:00 &mdash; 04:00.
+Vibe: unforgettable.
+
+Be There.
+&mdash; Elevate Records</div>
+  </div>
+
+  <h5 class="sub" style="margin-top: 48px;">Template-uri SMS (limita 160 caractere)</h5>
+
+  <div class="msg-card">
+    <h4>SMS 1 &mdash; Lansare</h4>
+    <div class="msg-timing">Saptamana 1</div>
+    <div class="msg-body">Cafe De Anatolia in Bucuresti! 25 Apr, Grand Hotel. First Wave 100 LEI, doar 300 bilete. Ia-ti acum: biletin.ro/bilete/cafe-de-anatolia-showcase-1</div>
+  </div>
+
+  <div class="msg-card">
+    <h4>SMS 2 &mdash; Urgenta</h4>
+    <div class="msg-timing">Saptamana 3</div>
+    <div class="msg-body">Biletele First Wave pt Cafe De Anatolia (25 Apr) aproape sold out. 100 LEI cat mai sunt. Nu astepta: biletin.ro/bilete/cafe-de-anatolia-showcase-1</div>
+  </div>
+
+  <div class="msg-card">
+    <h4>SMS 3 &mdash; Ultima Sansa</h4>
+    <div class="msg-timing">Cu o zi inainte</div>
+    <div class="msg-body">MAINE: Cafe De Anatolia, Grand Hotel Bucuresti, 22:00. Ultimele bilete: biletin.ro/bilete/cafe-de-anatolia-showcase-1 Be There!</div>
+  </div>
+</section>
+
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<div class="footer">
+  <p>Cafe De Anatolia Showcase &mdash; Kit Promovare &nbsp;&middot;&nbsp; Generat pentru <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1">Elevate Records</a></p>
+  <p style="margin-top: 8px; color: var(--text-muted);">25 Aprilie 2026 &nbsp;&middot;&nbsp; Grand Hotel Bucharest &nbsp;&middot;&nbsp; biletin.ro</p>
+</div>
+
+<script>
+  document.querySelectorAll('.toc a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        const offset = document.querySelector('.toc').offsetHeight + 16;
+        window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
