@@ -2306,13 +2306,26 @@ initVideoControls('venueVideo', 'venueBigPlay', 'venueSound');
 // ─── TICKET FOMO ──────────────────────────
 (function() {
   var totalTickets = 1200;
-  // Random sold between 750-1050 — always looks busy, never sold out
-  var sold = Math.floor(Math.random() * 301) + 750;
+  var eventDate = new Date('2026-04-25T22:00:00+03:00');
+  var salesStart = new Date('2026-03-15T00:00:00+03:00'); // ~40 days before
+  var now = new Date();
+  var totalDays = (eventDate - salesStart) / 86400000;
+  var elapsed = Math.max(0, Math.min(totalDays, (now - salesStart) / 86400000));
+  var daysLeft = Math.max(0, (eventDate - now) / 86400000);
+
+  // Progress curve: slow start, accelerates toward event
+  // At 40 days out: ~5% sold. At 20 days: ~25%. At 10 days: ~50%. At 3 days: ~80%. Day of: ~92%
+  var progress = Math.pow(elapsed / totalDays, 1.8);
+  var baseSold = Math.floor(progress * totalTickets * 0.92);
+  // Add small daily jitter (±15) so it's not identical on every refresh
+  var jitter = Math.floor(Math.random() * 31) - 15;
+  var sold = Math.max(0, Math.min(Math.floor(totalTickets * 0.95), baseSold + jitter));
   var remaining = totalTickets - sold;
   var pct = (sold / totalTickets) * 100;
 
-  // Random recent buyers 18-54
-  var recent = Math.floor(Math.random() * 37) + 18;
+  // Recent buyers scale with urgency: more buyers as event approaches
+  var recentBase = daysLeft > 20 ? 5 : daysLeft > 10 ? 15 : daysLeft > 3 ? 35 : 60;
+  var recent = recentBase + Math.floor(Math.random() * 12);
 
   var fill = document.getElementById('ticketFill');
   var soldEl = document.getElementById('ticketSold');
