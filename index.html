@@ -1402,6 +1402,115 @@ img { max-width: 100%; display: block; }
   border-radius: 100px;
 }
 
+.ticket-tiers {
+  max-width: 1100px;
+  margin: 80px auto 0;
+  text-align: left;
+}
+
+.ticket-tiers-title {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 32px;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.ticket-tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.ticket-tier {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  background: rgba(15,15,15,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+
+a.ticket-tier:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  background: rgba(212,168,82,0.06);
+}
+
+.ticket-tier-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ticket-tier-price {
+  font-family: var(--font-heading);
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.ticket-tier-price span {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-left: 4px;
+}
+
+.ticket-tier-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.ticket-tier-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: rgba(212,168,82,0.15);
+  color: var(--gold);
+  border-radius: 100px;
+}
+
+.ticket-tier-tag--red {
+  background: rgba(220,60,60,0.15);
+  color: #e06b6b;
+}
+
+.ticket-tier--vip {
+  border-color: rgba(212,168,82,0.35);
+  background: linear-gradient(160deg, rgba(212,168,82,0.08), rgba(15,15,15,0.5));
+}
+
+.ticket-tier--soldout {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.ticket-tier--soldout .ticket-tier-price {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
 .ticket-card-features li svg {
   width: 16px;
   height: 16px;
@@ -1901,16 +2010,64 @@ img { max-width: 100%; display: block; }
       ]
     }
   ],
-  "offers": {
-    "@type": "Offer",
-    "name": "First Wave — Early Access",
-    "url": "https://biletin.ro/bilete/cafe-de-anatolia-showcase-1",
-    "price": 100,
-    "priceCurrency": "RON",
-    "availability": "https://schema.org/InStock",
-    "validFrom": "2026-01-01T00:00:00+02:00",
-    "category": "Early Bird"
-  }
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Second Wave",
+      "url": "https://biletin.ro/bilete/cafe-de-anatolia-showcase-1",
+      "price": 120,
+      "priceCurrency": "RON",
+      "availability": "https://schema.org/InStock",
+      "category": "General Admission"
+    },
+    {
+      "@type": "Offer",
+      "name": "Acces Backstage",
+      "url": "https://biletin.ro/bilete/cafe-de-anatolia-showcase-1",
+      "price": 135,
+      "priceCurrency": "RON",
+      "availability": "https://schema.org/InStock",
+      "category": "Backstage"
+    },
+    {
+      "@type": "Offer",
+      "name": "Wave 2 — Pachet Grup (5+1 Gratuit)",
+      "url": "https://biletin.ro/bilete/cafe-de-anatolia-showcase-1",
+      "price": 600,
+      "priceCurrency": "RON",
+      "availability": "https://schema.org/InStock",
+      "category": "Group"
+    },
+    {
+      "@type": "Offer",
+      "name": "VIP Table Experience",
+      "description": "Backstage access + consumatie preplatita in valoare de 1800 RON",
+      "url": "https://biletin.ro/bilete/cafe-de-anatolia-showcase-1",
+      "price": 3100,
+      "priceCurrency": "RON",
+      "availability": "https://schema.org/InStock",
+      "category": "VIP Table"
+    },
+    {
+      "@type": "Offer",
+      "name": "VIP Table",
+      "description": "Consumatie preplatita in valoare de 1800 RON. Biletele de acces se cumpara separat.",
+      "url": "https://biletin.ro/bilete/cafe-de-anatolia-showcase-1",
+      "price": 1800,
+      "priceCurrency": "RON",
+      "availability": "https://schema.org/InStock",
+      "category": "VIP Table"
+    },
+    {
+      "@type": "Offer",
+      "name": "First Wave — Early Access",
+      "url": "https://biletin.ro/bilete/cafe-de-anatolia-showcase-1",
+      "price": 100,
+      "priceCurrency": "RON",
+      "availability": "https://schema.org/SoldOut",
+      "category": "Early Bird"
+    }
+  ]
 }
 </script>
 
@@ -2380,10 +2537,10 @@ img { max-width: 100%; display: block; }
     <div class="ticket-card reveal">
       <div class="ticket-card-badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        First Wave &mdash; Early Access
+        Second Wave
       </div>
-      <div class="ticket-card-price gold-text">100 <span>RON</span></div>
-      <div class="ticket-card-limit">Limitat la 300 de bilete</div>
+      <div class="ticket-card-price gold-text">120 <span>RON</span></div>
+      <div class="ticket-card-limit">First Wave epuizat &mdash; locuri limitate</div>
 
       <ul class="ticket-card-features">
         <li>
@@ -2396,17 +2553,13 @@ img { max-width: 100%; display: block; }
         </li>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Cel mai bun pret
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           Grand Hotel Bucharest
         </li>
       </ul>
 
       <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1" target="_blank" rel="noopener" class="btn-primary" onclick="fbq('track', 'InitiateCheckout');">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3v0a3 3 0 01-3 3v0a3 3 0 013 3v0a3 3 0 01-3 3H5a3 3 0 01-3-3v0a3 3 0 013-3v0a3 3 0 01-3-3z"/></svg>
-        Cumpara Bilete &mdash; 100 RON
+        Cumpara Bilete &mdash; 120 RON
       </a>
 
       <div class="ticket-progress">
@@ -2424,6 +2577,43 @@ img { max-width: 100%; display: block; }
         <span id="ticketRecent">32 de persoane au cumparat bilete in ultimele 24h</span>
       </div>
 
+    </div>
+
+    <div class="ticket-tiers reveal">
+      <h3 class="ticket-tiers-title">Alte optiuni</h3>
+      <div class="ticket-tiers-grid">
+
+        <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1" target="_blank" rel="noopener" class="ticket-tier" onclick="fbq('track', 'InitiateCheckout');">
+          <div class="ticket-tier-name">Acces Backstage</div>
+          <div class="ticket-tier-price">135 <span>RON</span></div>
+          <div class="ticket-tier-desc">Zona dedicata backstage</div>
+        </a>
+
+        <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1" target="_blank" rel="noopener" class="ticket-tier" onclick="fbq('track', 'InitiateCheckout');">
+          <div class="ticket-tier-name">Pachet Grup <span class="ticket-tier-tag">5+1 gratuit</span></div>
+          <div class="ticket-tier-price">600 <span>RON</span></div>
+          <div class="ticket-tier-desc">Wave 2 &mdash; 6 bilete, platesti 5</div>
+        </a>
+
+        <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1" target="_blank" rel="noopener" class="ticket-tier ticket-tier--vip" onclick="fbq('track', 'InitiateCheckout');">
+          <div class="ticket-tier-name">VIP Table Experience</div>
+          <div class="ticket-tier-price">3.100 <span>RON</span></div>
+          <div class="ticket-tier-desc">Backstage access + consumatie preplatita 1.800 RON</div>
+        </a>
+
+        <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1" target="_blank" rel="noopener" class="ticket-tier ticket-tier--vip" onclick="fbq('track', 'InitiateCheckout');">
+          <div class="ticket-tier-name">VIP Table</div>
+          <div class="ticket-tier-price">1.800 <span>RON</span></div>
+          <div class="ticket-tier-desc">Consumatie preplatita 1.800 RON. Biletele de acces se cumpara separat.</div>
+        </a>
+
+        <div class="ticket-tier ticket-tier--soldout">
+          <div class="ticket-tier-name">First Wave <span class="ticket-tier-tag ticket-tier-tag--red">Epuizat</span></div>
+          <div class="ticket-tier-price">100 <span>RON</span></div>
+          <div class="ticket-tier-desc">Early Access &mdash; bilete epuizate</div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
@@ -2463,7 +2653,7 @@ img { max-width: 100%; display: block; }
           <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
         <div class="faq-answer">
-          <p>Biletele First Wave (early access) costa 100 RON si sunt limitate la 300 de bucati. Dupa epuizarea lor, pretul creste. Biletele se cumpara exclusiv de pe biletin.ro.</p>
+          <p>First Wave (100 RON) este epuizat. Biletele Second Wave costa 120 RON, iar Acces Backstage 135 RON. Exista si un Pachet Grup 5+1 Gratuit (600 RON) si optiuni VIP Table (de la 1.800 RON). Biletele se cumpara exclusiv de pe biletin.ro.</p>
         </div>
       </div>
 
@@ -2528,7 +2718,7 @@ img { max-width: 100%; display: block; }
       "name": "Cat costa biletele si de unde le cumpar?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Biletele First Wave (early access) costa 100 RON si sunt limitate la 300 de bucati. Dupa epuizarea lor, pretul creste. Biletele se cumpara exclusiv de pe biletin.ro."
+        "text": "First Wave (100 RON) este epuizat. Biletele Second Wave costa 120 RON, iar Acces Backstage 135 RON. Exista si un Pachet Grup 5+1 Gratuit (600 RON) si optiuni VIP Table (de la 1.800 RON). Biletele se cumpara exclusiv de pe biletin.ro."
       }
     },
     {
@@ -2623,7 +2813,7 @@ img { max-width: 100%; display: block; }
 <div class="mobile-sticky-cta" id="mobileCta">
   <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1" target="_blank" rel="noopener" class="btn-primary" onclick="fbq('track', 'InitiateCheckout');">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3v0a3 3 0 01-3 3v0a3 3 0 013 3v0a3 3 0 01-3 3H5a3 3 0 01-3-3v0a3 3 0 013-3v0a3 3 0 01-3-3z"/></svg>
-    Cumpara Bilete &mdash; 100 RON
+    Cumpara Bilete &mdash; de la 120 RON
   </a>
 </div>
 
