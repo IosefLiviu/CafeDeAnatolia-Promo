@@ -1422,61 +1422,115 @@ img { max-width: 100%; display: block; }
 .ticket-tiers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
+  gap: 20px;
 }
 
 .ticket-tier {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 24px;
-  background: rgba(15,15,15,0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  padding: 28px 24px 24px;
+  background: linear-gradient(180deg, rgba(22,22,22,0.85), rgba(10,10,10,0.75));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 18px;
   text-decoration: none;
   color: inherit;
-  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  overflow: hidden;
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.ticket-tier::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(212,168,82,0.4), transparent);
+  opacity: 0;
+  transition: opacity .3s ease;
 }
 
 a.ticket-tier:hover {
-  transform: translateY(-3px);
-  border-color: var(--gold);
-  background: rgba(212,168,82,0.06);
+  transform: translateY(-4px);
+  border-color: rgba(212,168,82,0.6);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,168,82,0.15);
 }
+
+a.ticket-tier:hover::before { opacity: 1; }
+
+.ticket-tier-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212,168,82,0.12);
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.ticket-tier-icon svg { width: 22px; height: 22px; }
 
 .ticket-tier-name {
   font-family: var(--font-heading);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+  margin-bottom: 8px;
 }
 
 .ticket-tier-price {
   font-family: var(--font-heading);
-  font-size: 38px;
+  font-size: 44px;
   font-weight: 700;
   color: var(--gold);
   line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
 }
 
 .ticket-tier-price span {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 500;
   color: var(--text-secondary);
-  margin-left: 4px;
+  margin-left: 6px;
+  letter-spacing: 1px;
 }
 
 .ticket-tier-desc {
   font-size: 13px;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.55;
+  flex-grow: 1;
 }
+
+.ticket-tier-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.ticket-tier-cta svg {
+  width: 14px;
+  height: 14px;
+  transition: transform .3s ease;
+}
+
+a.ticket-tier:hover .ticket-tier-cta svg { transform: translateX(4px); }
 
 .ticket-tier-tag {
   display: inline-block;
@@ -1496,19 +1550,59 @@ a.ticket-tier:hover {
 }
 
 .ticket-tier--vip {
-  border-color: rgba(212,168,82,0.35);
-  background: linear-gradient(160deg, rgba(212,168,82,0.08), rgba(15,15,15,0.5));
+  border-color: rgba(212,168,82,0.4);
+  background: linear-gradient(165deg, rgba(212,168,82,0.14), rgba(22,22,22,0.85) 55%);
+}
+
+.ticket-tier--vip .ticket-tier-icon {
+  background: linear-gradient(135deg, rgba(212,168,82,0.35), rgba(212,168,82,0.1));
+  color: #f0c97a;
+}
+
+.ticket-tier--vip::after {
+  content: "VIP";
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #0a0a0a;
+  background: var(--gold);
+  border-radius: 100px;
 }
 
 .ticket-tier--soldout {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
+  filter: grayscale(0.4);
+}
+
+.ticket-tier--soldout .ticket-tier-icon {
+  background: rgba(220,60,60,0.1);
+  color: #e06b6b;
 }
 
 .ticket-tier--soldout .ticket-tier-price {
   color: var(--text-muted);
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+.ticket-tier--soldout .ticket-tier-price::after {
+  content: "";
+  position: absolute;
+  left: -4px; right: 30%;
+  top: 52%;
+  height: 2px;
+  background: #e06b6b;
+  transform: rotate(-6deg);
+}
+
+.ticket-tier--soldout .ticket-tier-cta {
+  color: #e06b6b;
+  pointer-events: none;
 }
 
 .ticket-card-features li svg {
@@ -2584,33 +2678,53 @@ a.ticket-tier:hover {
       <div class="ticket-tiers-grid">
 
         <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1" target="_blank" rel="noopener" class="ticket-tier" onclick="fbq('track', 'InitiateCheckout');">
+          <div class="ticket-tier-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+          </div>
           <div class="ticket-tier-name">Acces Backstage</div>
-          <div class="ticket-tier-price">135 <span>RON</span></div>
-          <div class="ticket-tier-desc">Zona dedicata backstage</div>
+          <div class="ticket-tier-price">135<span>RON</span></div>
+          <div class="ticket-tier-desc">Acces in zona backstage pe langa scena, aproape de artisti.</div>
+          <span class="ticket-tier-cta">Cumpara <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </a>
 
         <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1" target="_blank" rel="noopener" class="ticket-tier" onclick="fbq('track', 'InitiateCheckout');">
+          <div class="ticket-tier-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
           <div class="ticket-tier-name">Pachet Grup <span class="ticket-tier-tag">5+1 gratuit</span></div>
-          <div class="ticket-tier-price">600 <span>RON</span></div>
-          <div class="ticket-tier-desc">Wave 2 &mdash; 6 bilete, platesti 5</div>
+          <div class="ticket-tier-price">600<span>RON</span></div>
+          <div class="ticket-tier-desc">Wave 2 &mdash; 6 bilete, platesti doar 5. Ideal pentru prieteni.</div>
+          <span class="ticket-tier-cta">Cumpara <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </a>
 
         <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1" target="_blank" rel="noopener" class="ticket-tier ticket-tier--vip" onclick="fbq('track', 'InitiateCheckout');">
-          <div class="ticket-tier-name">VIP Table Experience</div>
-          <div class="ticket-tier-price">3.100 <span>RON</span></div>
-          <div class="ticket-tier-desc">Backstage access + consumatie preplatita 1.800 RON</div>
-        </a>
-
-        <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1" target="_blank" rel="noopener" class="ticket-tier ticket-tier--vip" onclick="fbq('track', 'InitiateCheckout');">
+          <div class="ticket-tier-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l5 5 5-8 5 8 5-5-2 13H4z"/></svg>
+          </div>
           <div class="ticket-tier-name">VIP Table</div>
-          <div class="ticket-tier-price">1.800 <span>RON</span></div>
+          <div class="ticket-tier-price">1.800<span>RON</span></div>
           <div class="ticket-tier-desc">Consumatie preplatita 1.800 RON. Biletele de acces se cumpara separat.</div>
+          <span class="ticket-tier-cta">Rezerva masa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </a>
+
+        <a href="https://biletin.ro/bilete/cafe-de-anatolia-showcase-1" target="_blank" rel="noopener" class="ticket-tier ticket-tier--vip" onclick="fbq('track', 'InitiateCheckout');">
+          <div class="ticket-tier-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l5 5 5-8 5 8 5-5-2 13H4z"/><circle cx="12" cy="5" r="1" fill="currentColor"/><circle cx="2" cy="7" r="1" fill="currentColor"/><circle cx="22" cy="7" r="1" fill="currentColor"/></svg>
+          </div>
+          <div class="ticket-tier-name">VIP Table Experience</div>
+          <div class="ticket-tier-price">3.100<span>RON</span></div>
+          <div class="ticket-tier-desc">Include acces backstage + consumatie preplatita 1.800 RON. Experienta completa.</div>
+          <span class="ticket-tier-cta">Rezerva masa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </a>
 
         <div class="ticket-tier ticket-tier--soldout">
+          <div class="ticket-tier-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
           <div class="ticket-tier-name">First Wave <span class="ticket-tier-tag ticket-tier-tag--red">Epuizat</span></div>
-          <div class="ticket-tier-price">100 <span>RON</span></div>
-          <div class="ticket-tier-desc">Early Access &mdash; bilete epuizate</div>
+          <div class="ticket-tier-price">100<span>RON</span></div>
+          <div class="ticket-tier-desc">Early Access &mdash; toate cele 300 de bilete au fost vandute.</div>
+          <span class="ticket-tier-cta">Indisponibil</span>
         </div>
 
       </div>
